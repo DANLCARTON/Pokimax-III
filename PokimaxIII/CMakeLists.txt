@@ -8,6 +8,16 @@ add_definitions(-std=c++11)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
 
+# Préciser la version de GCC
+if(CMAKE_COMPILER_IS_GNUCXX)
+    message(STATUS "GCC version: ${CMAKE_CXX_COMPILER_VERSION}")
+endif()
+
+# Préciser la version de Clang
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    message(STATUS "Clang version: ${CMAKE_CXX_COMPILER_VERSION}")
+endif()
+
 find_package(SDL REQUIRED)
 find_package(OpenGL REQUIRED)
 #find_package(GLEW REQUIRED)

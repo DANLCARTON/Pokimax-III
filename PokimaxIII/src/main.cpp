@@ -1,12 +1,3 @@
-/*
-
- - P R O J E T   :   P O K I M A X - 
- - R E A L I S E   P A R   :   M A X I M E   M A T H E V E T   E T   E R I C   T H I B E R G E -
- - A V E C   L ' A I D E   D E   :   J U L E S   F O U C H Y -
- - D E R N I E R E   V E R S I O N   :   2 4 / 0 1 / 2 0 2 2   1 9 : 3 2 -
-
-*/
-
 #include <iostream>
 #include <string.h> // permet d'utiliser des strings
 #include <chrono>
