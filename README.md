@@ -1,2 +1,2 @@
-# FISHH3RD
-👍
+# Pokimax III
+./pkmxIII.sh
