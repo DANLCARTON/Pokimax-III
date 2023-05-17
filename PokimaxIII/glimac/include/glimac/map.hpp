@@ -7,6 +7,7 @@
 #include <thread>
 #include <cstdlib> 
 #include <conio.h> 
+#include <glimac/SDLWindowManager.hpp>
 #include <random>
 #include <glimac/intro.hpp>
 #include <glimac/pokemon.hpp>
@@ -15,7 +16,7 @@
 
 namespace glimac {
 
-    void displayMap(string map[], int haut) {
+    void displayMap(std::string map[], int haut) {
         std::cout << "\x1B[2J\x1B[H"; // permet d'effacer le contenu de la console.
         std::cout << map[0] << std::endl;  // affiche la première ligne
         for (int i = 1; i <= haut-2; i++) {
@@ -24,7 +25,7 @@ namespace glimac {
         std::cout << map[haut-1] << std::endl; // affiche la dernière ligne
     }
 
-    void apparenceMap (string map[], int larg, int haut) {
+    void apparenceMap (std::string map[], int larg, int haut) {
         for (int i = 0; i <= larg; i++) {
             map[0]+="-"; // première ligne de la map -----------
         }
@@ -59,7 +60,7 @@ namespace glimac {
         */
     }
 
-    void genererPoints (string map[], int larg, int haut) {
+    void genererPoints (std::string map[], int larg, int haut) {
         for (int i = 0; i <= (larg/10)*(haut/10)*2; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
             int randomCoordY = rand() % (haut-2) + 1; // nombre aléatoire entre 1 et 1+(haut-2)
             int randomCoordX = rand() % (larg-2) + 1; // nombre aléatoire entre 1 et 1+(larg-2)
@@ -135,7 +136,7 @@ namespace glimac {
         std::cout << "hauteur de la map (conseillee : 25) : ";
         std::cin >> haut; // hauteur de la map
         const int hauteurMax = haut; // il faut absolument que ce soit une const pour les tailles de tableau
-        std::string* map = new string[hauteurMax]; // tableau de strings map = ["#######", "#     #", "#     #", "#######"] en gros
+        std::string* map = new std::string[hauteurMax]; // tableau de strings map = ["#######", "#     #", "#     #", "#######"] en gros
         int larg;
         std::cout << "largeur de la map (conseillee : 50): ";
         std::cin >> larg; // largeur de la map
@@ -155,7 +156,7 @@ namespace glimac {
         char dir; // on définit dir qui permettra de capter les inputs
 
         while(!KILL) { // tant que NOT KILL ou (KILL == false)
-            if (kbhit) { // si kbhit (KeyBoard Hit), une touche du clavier est préssée
+            if (kbhit() != 0) { // si kbhit (KeyBoard Hit), une touche du clavier est préssée
                 dir = getch(); // on stocke dans dir la touche qui a été appuyée
                 if (dir == 'z' && coordY > 1) { // si c'est Z et qu'on est pas collé au bord du haut
                     map[coordY][coordX] = ' '; // on remplace l'emplacement ou on est par du vide

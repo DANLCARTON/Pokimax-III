@@ -111,7 +111,7 @@ int battleAttaque(pokemon Pokemon, pokemon Foe) {
     } else if (sensi == .5) {
         efficacite = "Ce n'est pas tres efficace...";
     }
-    std::string ligne = "\n\n"+Pokemon.nom+" attaque !\n"+efficacite+"\n"+Foe.nom+" perd "+to_string((int)pvARetirer)+" PV";
+    std::string ligne = "\n\n"+Pokemon.nom+" attaque !\n"+efficacite+"\n"+Foe.nom+" perd "+std::to_string((int)pvARetirer)+" PV";
     lireLigne(ligne);
 
     // PIKACHU attaque !
@@ -126,14 +126,14 @@ int battleAttaque(pokemon Pokemon, pokemon Foe) {
 void battleChangePokemon(pokemon* Pokemon) { 
     lireLigne("\n\nQuel Pokemon doit remplacer "+Pokemon[0].nom+" ?");
     for (int i=0; i<=5; i++) {
-        cout << to_string(i+1)+" - "+Pokemon[i].nom << endl;
+        std::cout << std::to_string(i+1)+" - "+Pokemon[i].nom << std::endl;
     }
 
     int choixPokemon;
     pokemon slotReserve; // Permettra de mettre de côté le pokémon a changer de place
     bool CHOIXVALIDE = false; // permettra de sortir de la boucle
     while (!CHOIXVALIDE) { // Tant que CHOIXVALIDE est faux
-        cin >> choixPokemon; // On demande lequel on veut
+        std::cin >> choixPokemon; // On demande lequel on veut
         if (choixPokemon > 6) { // si le choix est supérieur à 6
             ; // on fait rien
         } else if (choixPokemon <= 6 && choixPokemon != 1 && Pokemon[choixPokemon-1].nom != "" && Pokemon[choixPokemon-1].pvNow > 0) { // si le choix est inférieur à 6, différent de 1, qu'il ne donne pas sur un emplacement vide et que le pokémon n'est pas KO
@@ -150,7 +150,7 @@ void battleChangePokemon(pokemon* Pokemon) {
 void battleCaptureChangePokemon(pokemon* Pokemon, pokemon Foe) { // Fonction basée sur battleChangePokemon() au fonctionnement à peu près similaire
     lireLigne("\n\nVous avez capture "+Foe.nom+" !\nseulement votre equipe ne peux pas contenir\nplus de 6 pokemon.\n\nQuel pokemon voulez-vous relacher ?");
     for (int i=0; i<=5; i++) {
-        std::cout << to_string(i+1)+" - "+Pokemon[i].nom << std::endl;
+        std::cout << std::to_string(i+1)+" - "+Pokemon[i].nom << std::endl;
     }
     std::cout << "7 - "+Foe.nom << std::endl;
 
@@ -170,7 +170,7 @@ void battleCaptureChangePokemon(pokemon* Pokemon, pokemon Foe) { // Fonction bas
     int choixPokemon;
     bool CHOIXVALIDE = false;
     while (!CHOIXVALIDE) {
-        cin >> choixPokemon;
+        std::cin >> choixPokemon;
         if (choixPokemon > 7) {
             ;
         } else if (choixPokemon <= 6) {
@@ -185,13 +185,13 @@ void battleCaptureChangePokemon(pokemon* Pokemon, pokemon Foe) { // Fonction bas
 void battleKOChangePokemon(pokemon* Pokemon) { // Fonction basée sur battleChangePokemon() au fonctionnement à peu près similaire
     lireLigne("\n"+Pokemon[0].nom+" est KO !\nQuel pokemon doit le remplacer ?");
     for (int i=1; i<=5; i++) {
-        std::cout << to_string(i+1)+" - "+Pokemon[i].nom << std::endl;
+        std::cout << std::to_string(i+1)+" - "+Pokemon[i].nom << std::endl;
     }
     int choixPokemon;
     pokemon slotReserve;
     bool CHOIXVALIDE = false; 
     while (!CHOIXVALIDE) { 
-        cin >> choixPokemon; 
+        std::cin >> choixPokemon; 
         if (choixPokemon > 6) { 
             ; 
         } else if (choixPokemon <= 6 && choixPokemon != 1 && Pokemon[choixPokemon-1].nom != "" && Pokemon[choixPokemon-1].pvNow > 0) { 
@@ -207,7 +207,7 @@ void battleKOChangePokemon(pokemon* Pokemon) { // Fonction basée sur battleChan
 
 bool battleCapture(pokemon* Pokemon, pokemon Foe) {
     float a = (1-((2*Foe.pvNow)/300))*Foe.taux; // a sera compris entre 3 et 100. 
-    lireLigne("\n\nLa capture a "+to_string((int)a)+"% de chances de reussir"); // on affiche le %age de chances de réussir (a)
+    lireLigne("\n\nLa capture a "+std::to_string((int)a)+"% de chances de reussir"); // on affiche le %age de chances de réussir (a)
     std::random_device rd; //                           ╗
     std::mt19937 gen(rd()); //                          ║ Permet de tirer un nombre aléatoire entre 1 et 100
     std::uniform_int_distribution<> distrib(1, 100);//  ╝
@@ -249,7 +249,7 @@ void battleStart(pokemon* Pokemon, pokemon Foe) {
     bool NOKO = true; // (no KO) permettra de savoir si toute l'équipe est KO
 
     while(ACTION && NOKO) { // Tant que ACTION est vrai et que l'équipe est pas KO
-        if (kbhit) { // Si on appuie sur une touche
+        if (kbhit() != 0) { // Si on appuie sur une touche
             char act = getch(); // on récupère la touche sur laquelle on appuyé
             if (act == 'r') { // si c'est R
                 Foe.pvNow = battleAttaque(Pokemon[0], Foe); // On lance la fonction ATTAQUE avec notre pokémon à l'attaque et le pokémon sauvage en défense
