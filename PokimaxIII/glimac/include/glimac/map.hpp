@@ -61,11 +61,12 @@ namespace glimac {
         */
     }
 
-    void genererPoints (std::string map[], int larg, int haut) {
+    void genererPoints (std::string map[], int larg, int haut, int shape) {
         for (int i = 0; i <= (larg/10)*(haut/10)*2; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
-            int randomCoordY = rand() % (haut-2) + 1; // nombre aléatoire entre 1 et 1+(haut-2)
-            int randomCoordX = rand() % (larg-2) + 1; // nombre aléatoire entre 1 et 1+(larg-2)
-            map[randomCoordY][randomCoordX] = 'x';
+            int coordY = floor(densite(0, shape) * (haut-2))+1;
+            int coordX = floor(densite(0, shape) * (larg-2))+1;
+            std::cout << coordY << " " << coordX << std::endl;
+            map[coordY][coordX] = 'x';
         }
     }
 
@@ -76,12 +77,13 @@ namespace glimac {
         std::cout << "id : " <<  id << std::endl;
 
         // On définit tous les pokémon
-
-        for (int i = 0; i < 10; ++i) {
-            int k = geometrique(id);
-            float p = probaGeometrique(id, k);
-            std::cout << k << " " << p << std::endl;
+        
+        float a = 0;
+        for (int i = 0; i < 1000; ++i) {
+            std::cout << densite(id, 1) << std::endl;
+            a += densite(0, 1);
         }
+        std::cout << a/1000.0 << std::endl;
 
         pokemon Pikachu = definePikachu();
         pokemon Canarticho = defineCanarticho();
@@ -196,10 +198,13 @@ namespace glimac {
         int larg;
         std::cout << "largeur de la map (conseillee : 50): ";
         std::cin >> larg; // largeur de la map
+        int shape;
+        std::cout << "forme de la map (0 = normal, 1 = Gauss, 2 = 2X) : ";
+        std::cin >> shape;
 
         apparenceMap(map, larg, haut); // on génère l'apparence de la map
 
-        genererPoints(map, larg, haut); // on génère l'emplacement des points
+        genererPoints(map, larg, haut, shape); // on génère l'emplacement des points
 
         int coordX = 1; // coordonnée sur l'axe X du Personnage
         int coordY = 1; // coordonnée sur l'axe Y du Personnage
