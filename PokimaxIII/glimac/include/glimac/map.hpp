@@ -73,7 +73,7 @@ namespace glimac {
 
         srand(id);
 
-        std::cout << id << std::endl;
+        std::cout << "id : " <<  id << std::endl;
 
         // On définit tous les pokémon
 
@@ -85,13 +85,21 @@ namespace glimac {
 
         pokemon Pikachu = definePikachu();
         pokemon Canarticho = defineCanarticho();
+        pokemon Kangourex = defineKangourex();
+        pokemon Scarabrute = defineScarabrute();
+        pokemon Tauros = defineTauros();
+        pokemon Locklass = defineLocklass();
         pokemon Insolourdo = defineInsolourdo();
         pokemon Qwilfish = defineQwilfish();
         pokemon Caratroc = defineCaratroc();
+        pokemon Scarinho = defineScarinho();
         pokemon Corayon = defineCorayon();
         pokemon Cadoizo = defineCadoizo();
         pokemon Airmure = defineAirmure();
+        pokemon Queulorior = defineQueulorior();
         pokemon Ecremeuh = defineEcremeuh();
+        pokemon Tenefix = defineTenefix();
+        pokemon Mysdibule = defineMysdibule();
         pokemon Posipi = definePosipi();
         pokemon Negapi = defineNegapi();
         pokemon Muciole = defineMuciole();
@@ -102,24 +110,42 @@ namespace glimac {
         pokemon Seviper = defineSeviper();
         pokemon Seleroc = defineSeleroc();
         pokemon Solaroc = defineSolaroc();
+        pokemon Morpheo = defineMorpheo();
         pokemon Kecleon = defineKecleon();
+        pokemon Tropius = defineTropius();
+        pokemon Absol = defineAbsol();
+        pokemon Relicanth = defineRelicanth();
+        pokemon Lovdisc = defineLovdisc();
         pokemon Pachirisu = definePachirisu();
         pokemon Pijako = definePijako();
+        pokemon Spiritomb = defineSpiritomb();
+        pokemon Vortente = defineVortente();
         pokemon Motisma = defineMotisma();
         pokemon Nanmeouie = defineNanmeouie();
+        pokemon Judokrak = defineJudokrak();
+        pokemon Karaclee = defineKaraclee();
         pokemon Bargantua = defineBargantua();
         pokemon Maracachi = defineMaracachi();
+        pokemon Cryptero = defineCryptero();
         pokemon Emolga = defineEmolga();
-        pokemon Mamambo = defineMamambo();
+        pokemon Mamanbo = defineMamanbo();
         pokemon Hexagel = defineHexagel();
         pokemon Limonde = defineLimonde();
+        pokemon Drakkarmin = defineDrakkarmin();
+        pokemon Frison = defineFrison();
         pokemon Aflamanoir = defineAflamanoir();
         pokemon Fermite = defineFermite();
+        pokemon Couafarel = defineCouafarel();
+        pokemon Brutalibre = defineBrutalibre();
         pokemon Dedenne = defineDedenne();
         pokemon Strassie = defineStrassie();
+        pokemon Trousselin = defineTrousselin();
         pokemon Brocelome = defineBrocelome();
         pokemon Plumeline = definePlumeline();
         pokemon Froussardine = defineFroussardine();
+        pokemon Guerilande = defineGuerilande();
+        pokemon Gouroutan = defineGouroutan();
+        pokemon Quartermac = defineQuartermac();
         pokemon Concombaffe = defineConcombaffe();
         pokemon Meteno = defineMeteno();
         pokemon Dodoala = defineDodoala();
@@ -130,18 +156,33 @@ namespace glimac {
         pokemon Draieul = defineDraieul();
         pokemon Sinistrail = defineSinistrail();
         pokemon Katagami = defineKatagami();
+        pokemon Nigosier = defineNigosier();
+        pokemon Hexadron = defineHexadron();
+        pokemon Wimessir = defineWimessir();
+        pokemon Duralugon = defineDuralugon();
         pokemon Wattapik = defineWattapik();
         pokemon Dolman = defineDolman();
         pokemon Bekaglacon = defineBekaglacon();
         pokemon Morpeko = defineMorpeko();
+        pokemon Tapatoes = defineTapatoes();
+        pokemon Craparoi = defineCraparoi();
+        pokemon Lestombaile = defineLestombaile();
+        pokemon Ferdeter = defineFerdeter();
+        pokemon Flamenroule = defineFlamenroule();
+        pokemon Delestin = defineDelestin();
+        pokemon Oyacata = defineOyacata();
+        pokemon Nigirigon = defineNigirigon();
+        pokemon Motorizard = defineMotorizard();
+        pokemon Chongjian = defineChongjian();
+        pokemon Baojian = defineBaojian();
+        pokemon Dinglu = defineDinglu();
+        pokemon Yuyu = defineYuyu();
+        pokemon RugitLune = defineRugitLune();
+        pokemon GardeDeFer = defineGardeDeFer();
 
         // On les met dans une liste, cela permettra de tirer un pokémon aléatoire plus facilement pour les rencontres
 
-        pokemon listeDesPokemon[51] = {Pikachu, Canarticho, Insolourdo, Qwilfish, Caratroc, Corayon, Cadoizo, Airmure, Ecremeuh, Posipi, Negapi, Muciole, Lumivole, Chartor, Spinda, Mangriff, Seviper, Seleroc, Solaroc, Kecleon, Pachirisu, Pijako, Motisma, Nanmeouie, Bargantua, Maracachi, Emolga, Mamambo, Hexagel, Limonde, Aflamanoir, Fermite, Dedenne, Strassie, Brocelome, Plumeline, Froussardine, Concombaffe, Meteno, Dodoala, Boumata, Togedemaru, Mimiqui, Denticrisse, Draieul, Sinistrail, Katagami, Wattapik, Dolman, Bekaglacon, Morpeko};
-
-        for (pokemon &p : listeDesPokemon) {
-            std::cout << p.nom << ", " << p.type << ", 100, 100, " << p.atk << ", " << p.def << ", " << p.taux << std::endl;
-        }
+        pokemon listeDesPokemon[96] = {Pikachu, Canarticho, Kangourex, Scarabrute, Tauros, Locklass, Insolourdo, Qwilfish, Caratroc, Scarinho, Corayon, Cadoizo, Airmure, Queulorior, Ecremeuh, Tenefix, Mysdibule, Posipi, Negapi, Muciole, Lumivole, Chartor, Spinda, Mangriff, Seviper, Seleroc, Solaroc, Morpheo, Kecleon, Tropius, Absol, Relicanth, Lovdisc, Pachirisu, Pijako, Spiritomb, Vortente, Motisma, Nanmeouie, Judokrak, Karaclee, Bargantua, Maracachi, Cryptero, Emolga, Mamanbo, Hexagel, Limonde, Drakkarmin, Frison, Aflamanoir, Fermite, Couafarel, Brutalibre, Dedenne, Strassie, Trousselin, Brocelome, Plumeline, Froussardine, Guerilande, Gouroutan, Quartermac, Concombaffe, Meteno, Dodoala, Boumata, Togedemaru, Mimiqui, Denticrisse, Draieul, Sinistrail, Katagami, Nigosier, Hexadron, Wimessir, Duralugon, Wattapik, Dolman, Bekaglacon, Morpeko, Tapatoes, Craparoi, Lestombaile, Ferdeter, Flamenroule, Delestin, Oyacata, Nigirigon, Motorizard, Chongjian, Baojian, Dinglu, Yuyu, RugitLune, GardeDeFer};
 
         // Une liste pour l'équipe du joueur
 
@@ -179,7 +220,7 @@ namespace glimac {
                     if (map[coordY][coordX] == 'x') { // on vérifie si la case de destination est occupée par un x
                         std::random_device rd; //                           ╗
                         std::mt19937 gen(rd()); //                          ║ Permet de tirer un nombre aléatoire entre 0 et 50
-                        std::uniform_int_distribution<> distrib(0, 50);//   ╝
+                        std::uniform_int_distribution<> distrib(0, 95);//   ╝
                         battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
                     }
                     map[coordY][coordX] = '#'; // on remplace la nouvelle coordonnée par notre personnage
@@ -202,7 +243,7 @@ namespace glimac {
                     if (map[coordY][coordX] == 'x') {
                         std::random_device rd; 
                         std::mt19937 gen(rd());
-                        std::uniform_int_distribution<> distrib(0, 50);
+                        std::uniform_int_distribution<> distrib(0, 95);
                         battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
                     }
                     map[coordY][coordX] = '#';
@@ -225,7 +266,7 @@ namespace glimac {
                     if (map[coordY][coordX] == 'x') {
                         std::random_device rd;
                         std::mt19937 gen(rd());
-                        std::uniform_int_distribution<> distrib(0, 50);
+                        std::uniform_int_distribution<> distrib(0, 95);
                         battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
                     }
                     map[coordY][coordX] = '#';
@@ -248,7 +289,7 @@ namespace glimac {
                     if (map[coordY][coordX] == 'x') {
                         std::random_device rd;
                         std::mt19937 gen(rd());
-                        std::uniform_int_distribution<> distrib(0, 50);
+                        std::uniform_int_distribution<> distrib(0, 95);
                         battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
                     }
                     map[coordY][coordX] = '#';
