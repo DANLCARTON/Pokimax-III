@@ -14,6 +14,12 @@ SDL/SDL.h
 glm.hpp
 ../glimac/include/glimac/glm.hpp
 
+../glimac/include/glimac/aleatoire.hpp
+stdlib.h
+-
+math.h
+-
+
 ../glimac/include/glimac/battle.hpp
 iostream
 -
@@ -82,6 +88,8 @@ glimac/pokemon.hpp
 glimac/battle.hpp
 -
 glimac/verifStop.hpp
+-
+glimac/aleatoire.hpp
 -
 
 ../glimac/include/glimac/pokemon.hpp

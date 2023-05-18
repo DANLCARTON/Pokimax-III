@@ -12,6 +12,8 @@ namespace glimac {
         int atk; // stat d'attaque
         int def; // stat de défence
         int taux; // taux de capture (100 = égal facile à capturer, 0 = impossible (littéralement) à capturer)
+        int prc;
+        int rare;
     }pokemon;
 
     pokemon definePikachu() {

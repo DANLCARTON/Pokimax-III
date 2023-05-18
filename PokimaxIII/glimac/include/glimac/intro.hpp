@@ -7,6 +7,14 @@
 
 namespace glimac {
 
+    int getId(std::string &name) {
+        int id = 0;
+        for (char &c : name) {
+            id += c;
+        }
+        return id;
+    }
+
     void lireLigne(std::string L) {
         for (char &c : L) {
             std::cout << c << std::flush;
@@ -16,11 +24,11 @@ namespace glimac {
     }
 
     void entreLigne() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // on attent 1500ms puis
+        std::this_thread::sleep_for(std::chrono::milliseconds(20)); // on attent 1500ms puis
         std::cout << "\x1B[2J\x1B[H"; // on efface le contenu de la console
     }
 
-    void intro() {
+    int intro() {
         
         entreLigne();
 
@@ -103,6 +111,9 @@ namespace glimac {
 
         lireLigne("Allez, plonge dans le monde des\nPokemon !");
         entreLigne();
+
+        int id = getId(playerName);
+        return id;
     }
 }
 

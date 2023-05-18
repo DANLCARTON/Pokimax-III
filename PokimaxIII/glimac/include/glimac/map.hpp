@@ -13,6 +13,7 @@
 #include <glimac/pokemon.hpp>
 #include <glimac/battle.hpp>
 #include <glimac/verifStop.hpp>
+#include <glimac/aleatoire.hpp>
 
 namespace glimac {
 
@@ -68,9 +69,19 @@ namespace glimac {
         }
     }
 
-    void mapStart() {
+    void mapStart(int id) {
+
+        srand(id);
+
+        std::cout << id << std::endl;
 
         // On définit tous les pokémon
+
+        for (int i = 0; i < 10; ++i) {
+            int k = geometrique(id);
+            float p = probaGeometrique(id, k);
+            std::cout << k << " " << p << std::endl;
+        }
 
         pokemon Pikachu = definePikachu();
         pokemon Canarticho = defineCanarticho();
@@ -128,9 +139,13 @@ namespace glimac {
 
         pokemon listeDesPokemon[51] = {Pikachu, Canarticho, Insolourdo, Qwilfish, Caratroc, Corayon, Cadoizo, Airmure, Ecremeuh, Posipi, Negapi, Muciole, Lumivole, Chartor, Spinda, Mangriff, Seviper, Seleroc, Solaroc, Kecleon, Pachirisu, Pijako, Motisma, Nanmeouie, Bargantua, Maracachi, Emolga, Mamambo, Hexagel, Limonde, Aflamanoir, Fermite, Dedenne, Strassie, Brocelome, Plumeline, Froussardine, Concombaffe, Meteno, Dodoala, Boumata, Togedemaru, Mimiqui, Denticrisse, Draieul, Sinistrail, Katagami, Wattapik, Dolman, Bekaglacon, Morpeko};
 
+        for (pokemon &p : listeDesPokemon) {
+            std::cout << p.nom << ", " << p.type << ", 100, 100, " << p.atk << ", " << p.def << ", " << p.taux << std::endl;
+        }
+
         // Une liste pour l'équipe du joueur
 
-        pokemon playerTeam[6] = {Pikachu, Canarticho, Insolourdo, Qwilfish, Caratroc, Corayon};
+        pokemon playerTeam[6] = {Pikachu};
 
         int haut;
         std::cout << "hauteur de la map (conseillee : 25) : ";

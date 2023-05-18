@@ -21,11 +21,11 @@ int main() {
     bool KILLMAIN = false;
     while (!KILLMAIN) {
         if (passIntro == 'Y' || passIntro == 'y') { // si oui
-            glimac::intro(); // on la regarde
-            glimac::mapStart(); // puis on lance le jeu
+            int id = glimac::intro(); // on la regarde
+            glimac::mapStart(id); // puis on lance le jeu
             KILLMAIN = true; // si on quite le jeu on sort du while pour bien fermer le jeu
         } else if (passIntro == 'N' || passIntro == 'n') { // si non
-            glimac::mapStart(); // on lance directement le ju
+            glimac::mapStart(50); // on lance directement le ju
             KILLMAIN = true; // si on quite le jeu on sort du while pour bien fermer le jeu
         } else { // si on donne une réponse invalide
             std::cout << "Regarder l'introduction ? (Y/N) : ";
