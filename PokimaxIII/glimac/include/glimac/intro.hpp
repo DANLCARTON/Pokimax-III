@@ -90,13 +90,6 @@ namespace glimac {
         lireLigne("Alors tu t'appelles "+playerName+" ?\nTrès bien !");
         entreLigne();
 
-        lireLigne("Et ton équipe, comment s'appelle-t-elle ? \nVotre équipe ? : ");
-
-        std::string teamName;
-        std::cin >> teamName;
-
-        entreLigne();
-
         lireLigne("Le moment est venu, "+playerName+" !\nTout est prêt ?");
         entreLigne();
 
