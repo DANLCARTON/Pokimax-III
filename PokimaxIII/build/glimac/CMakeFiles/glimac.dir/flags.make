@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/SDL -I/home/eric/Pokimax-III/PokimaxIII/glimac/include -I/home/eric/Pokimax-III/PokimaxIII/third-party/include 
+CXX_INCLUDES = -I/usr/include/SDL -I/home/eric/PIII/PokimaxIII/glimac/include -I/home/eric/PIII/PokimaxIII/third-party/include 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/Pokimax-III/PokimaxIII/glimac
+# Install script for directory: /home/eric/PIII/PokimaxIII/glimac
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/Pokimax-III/PokimaxIII
+# Install script for directory: /home/eric/PIII/PokimaxIII
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/eric/Pokimax-III/PokimaxIII/build/glimac/cmake_install.cmake")
-  include("/home/eric/Pokimax-III/PokimaxIII/build/src/cmake_install.cmake")
+  include("/home/eric/PIII/PokimaxIII/build/glimac/cmake_install.cmake")
+  include("/home/eric/PIII/PokimaxIII/build/src/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/eric/Pokimax-III/PokimaxIII/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/eric/PIII/PokimaxIII/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

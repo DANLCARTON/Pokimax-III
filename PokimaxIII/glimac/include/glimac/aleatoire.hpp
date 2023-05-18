@@ -13,7 +13,7 @@ namespace glimac {
     }
 
     float uniforme() {
-        return rand()/RAND_MAX; // nombre aléatoire entre 0 et 1 distribué de manière uniforme.
+        return static_cast<float>(rand())/RAND_MAX; // nombre aléatoire entre 0 et 1 distribué de manière uniforme.
     }
 
     float geometrique(int id) {
