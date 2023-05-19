@@ -61,11 +61,27 @@ namespace glimac {
         */
     }
 
-    void genererPoints (std::string map[], int larg, int haut, int shape) {
-        for (int i = 0; i <= (larg/10)*(haut/10)*2; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
+    void genererPoints (std::string map[], int larg, int haut, int shape, int id) {
+        float lambda = getPFromId(id)*(haut/3)*(larg/3);
+        int nbPoke = poisson(lambda);
+        lireLigne("- d'après votre id et les paramètres que vous avez rentré, le nombre de pokémon qui apparaîtront sur la map sera calculé par une loi de Poisson de paramètre lambda = "+std::to_string(lambda)+".");
+        lireLigne("- "+std::to_string(nbPoke)+" Pokémon apparaîtront sur la map.");
+        switch(shape) {
+            case(0):
+                lireLigne("- Ils seront distribués de manière uniforme sur toute la surface de la map.");
+                break;
+            case(1):
+                lireLigne("- Ils seront distribués suivant une courbe en forme de cloche de Gauss.");
+                break;
+            case(2):
+                lireLigne("- Ils seront distribués suivant la courbe de la fonction Y = 2X.");
+                break;
+            break;
+        }
+        wait(3000);
+        for (int i = 0; i <= nbPoke; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
             int coordY = floor(densite(0, shape) * (haut-2))+1;
             int coordX = floor(densite(0, shape) * (larg-2))+1;
-            std::cout << coordY << " " << coordX << std::endl;
             map[coordY][coordX] = 'x';
         }
     }
@@ -79,16 +95,6 @@ namespace glimac {
         // On définit tous les pokémon
         
 
-        std::cout << "1 1" << binomiale(id, 1, 1) << std::endl;
-        std::cout << "1 2" << binomiale(id, 1, 2) << std::endl;
-        std::cout << "2 2" << binomiale(id, 2, 2) << std::endl;
-        std::cout << "1 3" << binomiale(id, 1, 3) << std::endl;
-        std::cout << "2 3" << binomiale(id, 2, 3) << std::endl;
-        std::cout << "3 3" << binomiale(id, 3, 3) << std::endl;
-        std::cout << "1 4" << binomiale(id, 1, 4) << std::endl;
-        std::cout << "2 4" << binomiale(id, 2, 4) << std::endl;
-        std::cout << "3 4" << binomiale(id, 3, 4) << std::endl;
-        std::cout << "4 4" << binomiale(id, 4, 4) << std::endl;
 
         pokemon Pikachu = definePikachu();
         pokemon Canarticho = defineCanarticho();
@@ -209,7 +215,7 @@ namespace glimac {
 
         apparenceMap(map, larg, haut); // on génère l'apparence de la map
 
-        genererPoints(map, larg, haut, shape); // on génère l'emplacement des points
+        genererPoints(map, larg, haut, shape, id); // on génère l'emplacement des points
 
         int coordX = 1; // coordonnée sur l'axe X du Personnage
         int coordY = 1; // coordonnée sur l'axe Y du Personnage
