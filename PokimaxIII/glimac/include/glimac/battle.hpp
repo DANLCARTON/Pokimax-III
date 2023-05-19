@@ -38,6 +38,8 @@ namespace glimac {
     std::cout << "F - CAPTURE   G - FUITE";
 }
 
+
+
 float calculSensibilite(pokemon atk, pokemon def) {
 
     // N = Normal
@@ -103,26 +105,43 @@ float calculSensibilite(pokemon atk, pokemon def) {
     return sensi;
 }
 
+float getPrecision(int prc) {
+    float p = (((float)prc*90.0/130.0)+20.0)/100.0;
+    return p;
+}
+
+bool attaqueTouche(pokemon &pokemon) {
+    return bernouilli(getPrecision(pokemon.prc));
+}
+
 int battleAttaque(pokemon Pokemon, pokemon Foe) {
-    float sensi = calculSensibilite(Pokemon, Foe); // On commence par calculer la sensibilité des types
-    float pvARetirer = ((27*Pokemon.atk)/Foe.def)*sensi; // On calcule les dégâts
 
-    std::string efficacite;
-    if (sensi == 2) {
-        efficacite = "C'est super efficace !";
-    } else if (sensi == .5) {
-        efficacite = "Ce n'est pas tres efficace...";
+    std::cout << std::endl << std::endl;
+    lireLigne(Pokemon.nom+" a "+std::to_string((int)(getPrecision(Pokemon.prc)*100))+"% de chances de toucher son adversaire !");
+
+    if (attaqueTouche(Pokemon)) {
+        float sensi = calculSensibilite(Pokemon, Foe); // On commence par calculer la sensibilité des types
+        float pvARetirer = ((27*Pokemon.atk)/Foe.def)*sensi; // On calcule les dégâts
+
+        std::string efficacite;
+        if (sensi == 2) {
+            efficacite = "C'est super efficace !";
+        } else if (sensi == .5) {
+            efficacite = "Ce n'est pas tres efficace...";
+        }
+        std::string ligne = "\n"+Pokemon.nom+" attaque !\n"+efficacite+"\n"+Foe.nom+" perd "+std::to_string((int)pvARetirer)+" PV";
+        lireLigne(ligne);
+
+        // PIKACHU attaque !
+        // C'est super effficace !
+        // FROUSSARDINE perd ### PV
+
+        Foe.pvNow -= pvARetirer;
+
+    } else {
+        lireLigne(Foe.nom+" a esquivé l'attaque !!");
     }
-    std::string ligne = "\n\n"+Pokemon.nom+" attaque !\n"+efficacite+"\n"+Foe.nom+" perd "+std::to_string((int)pvARetirer)+" PV";
-    lireLigne(ligne);
-
-    // PIKACHU attaque !
-    // C'est super effficace !
-    // FROUSSARDINE perd ### PV
-
-    Foe.pvNow -= pvARetirer;
-
-    return Foe.pvNow;
+    return Foe.pvNow;    
 }
 
 void battleChangePokemon(pokemon* Pokemon) { 
@@ -280,6 +299,7 @@ void battleStart(pokemon* Pokemon, pokemon Foe, int id) {
                         }
                     }
                 }
+                entreLigne();
             } else if (act == 't') { // si c'est T
                 battleChangePokemon(Pokemon); // on lance la fonction pour changer de pokémon
                 Pokemon[0].pvNow = battleAttaque(Foe, Pokemon[0]); // ATTAQUE avec le pokémon sauvage à l'attaque et le nôtre en défense
@@ -298,6 +318,7 @@ void battleStart(pokemon* Pokemon, pokemon Foe, int id) {
                         ACTION = false;
                     }
                 }
+                entreLigne();
             } else if (act == 'f') {
                 CAPTURE = battleCapture(Pokemon, Foe, id);
                 if (CAPTURE) {
@@ -321,7 +342,10 @@ void battleStart(pokemon* Pokemon, pokemon Foe, int id) {
                         }
                     }
                 }
+                entreLigne();
             } else if (act == 'g' || (int)act == 27) { // Si c'est R ou ECHAP
+                lireLigne("\n\nVous prenez la fuite !!!");
+                entreLigne();
                 ACTION = false; // ACTION devient Faux, le combat s'arrête, retour à la map
             } else { // Si c'est n'importe quelle autre touche
                 std::cout << std::endl; // en gros rien

@@ -24,7 +24,7 @@ namespace glimac {
     }
 
     void entreLigne() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(20)); // on attent 1500ms puis
+        std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // on attent 1500ms puis
         std::cout << "\x1B[2J\x1B[H"; // on efface le contenu de la console
     }
 
