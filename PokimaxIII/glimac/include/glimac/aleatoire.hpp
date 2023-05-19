@@ -12,7 +12,7 @@ namespace glimac {
         return p;
     }
 
-    // - - - - - - A L E A T O I R E   U N I F O R M E S - - - - - - 
+    // - - - - - - A L E A T O I R E   C L A S S I Q U E S - - - - - - 
 
     float uniforme() {
         return static_cast<float>(rand())/RAND_MAX; // nombre aléatoire entre 0 et 1 distribué de manière uniforme.
@@ -32,6 +32,11 @@ namespace glimac {
             pick = uniforme();
         }
         return probaGeometrique(id, tries);
+    }   
+
+    bool bernouilli(float p) {
+        float val = uniforme();
+        return val < p ? true : false;
     }
 
     // - - - - - - A L E A T O I R E   A   D E N S I T E - - - - - - 

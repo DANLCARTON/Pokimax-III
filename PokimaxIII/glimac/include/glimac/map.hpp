@@ -78,12 +78,11 @@ namespace glimac {
 
         // On définit tous les pokémon
         
-        float a = 0;
+        /*
         for (int i = 0; i < 100; ++i) {
-            std::cout << probaGeometrique(id, i) << std::endl;
-            a += geometrique(id);
+            std::cout << bernouilli(uniforme()) << std::endl;
         }
-        std::cout << a/1000.0 << std::endl;
+        */
 
         pokemon Pikachu = definePikachu();
         pokemon Canarticho = defineCanarticho();
