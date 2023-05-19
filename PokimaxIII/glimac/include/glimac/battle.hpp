@@ -10,6 +10,8 @@
 #include <random>
 #include <glimac/intro.hpp>
 #include <glimac/pokemon.hpp>
+#include <glimac/map.hpp>
+#include <glimac/aleatoire.hpp>
 
 
 namespace glimac {
@@ -205,23 +207,26 @@ void battleKOChangePokemon(pokemon* Pokemon) { // Fonction basée sur battleChan
     }
 }
 
-bool battleCapture(pokemon* Pokemon, pokemon Foe) {
-    float a = (1-((2*Foe.pvNow)/300))*Foe.taux; // a sera compris entre 3 et 100. 
-    lireLigne("\n\nLa capture a "+std::to_string((int)a)+"% de chances de reussir"); // on affiche le %age de chances de réussir (a)
-    std::random_device rd; //                           ╗
-    std::mt19937 gen(rd()); //                          ║ Permet de tirer un nombre aléatoire entre 1 et 100
-    std::uniform_int_distribution<> distrib(1, 100);//  ╝
+bool battleCapture(pokemon* Pokemon, pokemon Foe, int id) {
+    float pvRatio = ((float)Foe.pvNow-1)/(float)Foe.pvMax;
+    float rate1 = probaGeometrique(id, 2)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    float rate2 = probaGeometrique(id, 3)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    float rate3 = probaGeometrique(id, 4)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    float rate4 = probaGeometrique(id, 5)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    std::cout << ((float)Foe.taux/2)*(1-(pvRatio))*100;
+    lireLigne("\n\n la capture a "+std::to_string((int)rate4)+"% de chances de réussir"); // on affiche le %age de chances de réussir (a)
+    float lancer = uniforme()*100;
     bool CAPTURE = false; // Pour l'instant rien n'est joué
-    if (distrib(gen) <= 100) {
+    if (lancer <= rate1) {
         lireLigne("............            "); // La Poké Ball tremble 1 fois
     } 
-    if (distrib(gen) <= (((100-a)/3)*2)+a) {
+    if (lancer <= rate2) {
         lireLigne("............            "); // La Poké Ball tremble 2 fois
     }
-    if (distrib(gen) <= ((100-a)/3)+a) {
+    if (lancer <= rate3) {
         lireLigne("............            "); // La Poké Ball tremble 3 fois
     }
-    if (distrib(gen) <= a) { // Si le nombre aléatoire tiré est inférieur ou égal à a
+    if (lancer <= rate4) { // Si le nombre aléatoire tiré est inférieur ou égal à a
         lireLigne("\nBRAVO ! "+Foe.nom+" a ete capture !!"); // La Capture est réussie
         int i = 1; // i permettra de défiler dans l'équipe pour voir où ajouter le pokémon capturé
         while (!CAPTURE) { // Tant que la capture sera considérée comme fausse
@@ -240,7 +245,7 @@ bool battleCapture(pokemon* Pokemon, pokemon Foe) {
     return CAPTURE; // Pour savoir si le pokémon sauvage pourra attaquer ensuite ou pas.
 }
 
-void battleStart(pokemon* Pokemon, pokemon Foe) {
+void battleStart(pokemon* Pokemon, pokemon Foe, int id) {
 
     displayBattle(Pokemon[0], Foe); // On affiche l'écran de combat
 
@@ -294,7 +299,7 @@ void battleStart(pokemon* Pokemon, pokemon Foe) {
                     }
                 }
             } else if (act == 'f') {
-                CAPTURE = battleCapture(Pokemon, Foe);
+                CAPTURE = battleCapture(Pokemon, Foe, id);
                 if (CAPTURE) {
                     ACTION = false;
                 }

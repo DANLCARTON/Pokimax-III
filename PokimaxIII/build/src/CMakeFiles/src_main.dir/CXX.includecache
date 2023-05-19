@@ -39,6 +39,10 @@ glimac/intro.hpp
 -
 glimac/pokemon.hpp
 -
+glimac/map.hpp
+-
+glimac/aleatoire.hpp
+-
 
 ../glimac/include/glimac/glm.hpp
 glm/glm.hpp

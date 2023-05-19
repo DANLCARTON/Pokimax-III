@@ -79,9 +79,9 @@ namespace glimac {
         // On définit tous les pokémon
         
         float a = 0;
-        for (int i = 0; i < 1000; ++i) {
-            std::cout << densite(id, 1) << std::endl;
-            a += densite(0, 1);
+        for (int i = 0; i < 100; ++i) {
+            std::cout << probaGeometrique(id, i) << std::endl;
+            a += geometrique(id);
         }
         std::cout << a/1000.0 << std::endl;
 
@@ -226,7 +226,7 @@ namespace glimac {
                         std::random_device rd; //                           ╗
                         std::mt19937 gen(rd()); //                          ║ Permet de tirer un nombre aléatoire entre 0 et 50
                         std::uniform_int_distribution<> distrib(0, 95);//   ╝
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
+                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
                     }
                     map[coordY][coordX] = '#'; // on remplace la nouvelle coordonnée par notre personnage
                     bool NOKO = verifDefaite(playerTeam); // NOKO est true si au moins un des pokémon est en état de se battre
@@ -249,7 +249,7 @@ namespace glimac {
                         std::random_device rd; 
                         std::mt19937 gen(rd());
                         std::uniform_int_distribution<> distrib(0, 95);
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
+                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
                     }
                     map[coordY][coordX] = '#';
                     bool NOKO = verifDefaite(playerTeam);
@@ -272,7 +272,7 @@ namespace glimac {
                         std::random_device rd;
                         std::mt19937 gen(rd());
                         std::uniform_int_distribution<> distrib(0, 95);
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
+                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
                     }
                     map[coordY][coordX] = '#';
                     bool NOKO = verifDefaite(playerTeam);
@@ -295,7 +295,7 @@ namespace glimac {
                         std::random_device rd;
                         std::mt19937 gen(rd());
                         std::uniform_int_distribution<> distrib(0, 95);
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)]);
+                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
                     }
                     map[coordY][coordX] = '#';
                     bool NOKO = verifDefaite(playerTeam);

@@ -12,8 +12,15 @@ namespace glimac {
         return p;
     }
 
+    // - - - - - - A L E A T O I R E   U N I F O R M E S - - - - - - 
+
     float uniforme() {
         return static_cast<float>(rand())/RAND_MAX; // nombre aléatoire entre 0 et 1 distribué de manière uniforme.
+    }
+
+    float probaGeometrique(int id, int k) {
+        float p = getPFromId(id);
+        return std::pow(1-p, k-1)*p;
     }
 
     float geometrique(int id) {
@@ -24,13 +31,10 @@ namespace glimac {
             ++tries;
             pick = uniforme();
         }
-        return tries;
+        return probaGeometrique(id, tries);
     }
 
-    float probaGeometrique(int id, int k) {
-        float p = getPFromId(id);
-        return std::pow(1-p, k-1)*p;
-    }
+    // - - - - - - A L E A T O I R E   A   D E N S I T E - - - - - - 
 
     float gauss(float val) {
         return (1/(std::sqrt(2*M_PI)))*std::exp(-2.0*val*val);
