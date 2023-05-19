@@ -228,12 +228,12 @@ void battleKOChangePokemon(pokemon* Pokemon) { // Fonction basée sur battleChan
 
 bool battleCapture(pokemon* Pokemon, pokemon Foe, int id) {
     float pvRatio = ((float)Foe.pvNow-1)/(float)Foe.pvMax;
-    float rate1 = probaGeometrique(id, 2)*((float)Foe.taux/2)*(1-(pvRatio))*100;
-    float rate2 = probaGeometrique(id, 3)*((float)Foe.taux/2)*(1-(pvRatio))*100;
-    float rate3 = probaGeometrique(id, 4)*((float)Foe.taux/2)*(1-(pvRatio))*100;
-    float rate4 = probaGeometrique(id, 5)*((float)Foe.taux/2)*(1-(pvRatio))*100;
-    std::cout << ((float)Foe.taux/2)*(1-(pvRatio))*100;
-    lireLigne("\n\n la capture a "+std::to_string((int)rate4)+"% de chances de réussir"); // on affiche le %age de chances de réussir (a)
+    float rate1 = binomiale(id, 1, 4)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    float rate2 = binomiale(id, 2, 4)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    float rate3 = binomiale(id, 3, 4)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    float rate4 = binomiale(id, 4, 4)*((float)Foe.taux/2)*(1-(pvRatio))*100;
+    //std::cout << ((float)Foe.taux/2)*(1-(pvRatio))*100;
+    lireLigne("\n\n la capture a "+std::to_string(rate4)+"% de chances de réussir"); // on affiche le %age de chances de réussir (a)
     float lancer = uniforme()*100;
     bool CAPTURE = false; // Pour l'instant rien n'est joué
     if (lancer <= rate1) {
@@ -259,7 +259,7 @@ bool battleCapture(pokemon* Pokemon, pokemon Foe, int id) {
             i++; // On passe a l'emplacement suivant 
         }
     } else { // Si le nombre aléatoire tiré est supérieur à a
-        lireLigne ("\nAAAARG ! La capture a echoue !"); // voilà
+        lireLigne ("\nAAAARG ! La capture a échoué !"); // voilà
     }
     return CAPTURE; // Pour savoir si le pokémon sauvage pourra attaquer ensuite ou pas.
 }
