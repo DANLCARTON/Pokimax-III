@@ -37,8 +37,8 @@ namespace glimac {
 
         Canarticho.nom = "CANARTICHO";
         Canarticho.type = 'N';
-        Canarticho.pvMax = 100;
-        Canarticho.pvNow = 100;
+        Canarticho.pvMax = 52;
+        Canarticho.pvNow = 52;
         Canarticho.atk = 90;
         Canarticho.def = 55;
         Canarticho.taux = 75;
@@ -53,8 +53,8 @@ namespace glimac {
 
         Kangourex.nom = "KANGOUREX";
         Kangourex.type = 'R';
-        Kangourex.pvMax = 100;
-        Kangourex.pvNow = 100;
+        Kangourex.pvMax = 105;
+        Kangourex.pvNow = 105;
         Kangourex.atk = 95;
         Kangourex.def = 80;
         Kangourex.taux = 18;
@@ -69,8 +69,8 @@ namespace glimac {
 
         Scarabrute.nom = "SCARABRUTE";
         Scarabrute.type = 'G';
-        Scarabrute.pvMax = 100;
-        Scarabrute.pvNow = 100;
+        Scarabrute.pvMax = 65;
+        Scarabrute.pvNow = 65;
         Scarabrute.atk = 125;
         Scarabrute.def = 100;
         Scarabrute.taux = 18;
@@ -85,8 +85,8 @@ namespace glimac {
 
         Tauros.nom = "TAUROS";
         Tauros.type = 'N';
-        Tauros.pvMax = 100;
-        Tauros.pvNow = 100;
+        Tauros.pvMax = 75;
+        Tauros.pvNow = 75;
         Tauros.atk = 100;
         Tauros.def = 95;
         Tauros.taux = 18;
@@ -101,8 +101,8 @@ namespace glimac {
 
         Locklass.nom = "LOCKLASS";
         Locklass.type = 'W';
-        Locklass.pvMax = 100;
-        Locklass.pvNow = 100;
+        Locklass.pvMax = 130;
+        Locklass.pvNow = 130;
         Locklass.atk = 85;
         Locklass.def = 80;
         Locklass.taux = 18;
@@ -133,8 +133,8 @@ namespace glimac {
 
         Qwilfish.nom = "QWILFISH";
         Qwilfish.type = 'W';
-        Qwilfish.pvMax = 100;
-        Qwilfish.pvNow = 100;
+        Qwilfish.pvMax = 65;
+        Qwilfish.pvNow = 65;
         Qwilfish.atk = 95;
         Qwilfish.def = 85;
         Qwilfish.taux = 15;
@@ -149,8 +149,8 @@ namespace glimac {
 
         Caratroc.nom = "CARATROC";
         Caratroc.type = 'R';
-        Caratroc.pvMax = 100;
-        Caratroc.pvNow = 100;
+        Caratroc.pvMax = 20;
+        Caratroc.pvNow = 20;
         Caratroc.atk = 10;
         Caratroc.def = 230;
         Caratroc.taux = 75;
@@ -165,8 +165,8 @@ namespace glimac {
 
         Scarinho.nom = "SCARINHO";
         Scarinho.type = 'G';
-        Scarinho.pvMax = 100;
-        Scarinho.pvNow = 100;
+        Scarinho.pvMax = 80;
+        Scarinho.pvNow = 80;
         Scarinho.atk = 125;
         Scarinho.def = 75;
         Scarinho.taux = 18;
@@ -181,8 +181,8 @@ namespace glimac {
 
         Corayon.nom = "CORAYON";
         Corayon.type = 'W';
-        Corayon.pvMax = 100;
-        Corayon.pvNow = 100;
+        Corayon.pvMax = 65;
+        Corayon.pvNow = 65;
         Corayon.atk = 55;
         Corayon.def = 95;
         Corayon.taux = 25;
@@ -197,8 +197,8 @@ namespace glimac {
 
         Cadoizo.nom = "CADOIZO";
         Cadoizo.type = 'W';
-        Cadoizo.pvMax = 100;
-        Cadoizo.pvNow = 100;
+        Cadoizo.pvMax = 45;
+        Cadoizo.pvNow = 45;
         Cadoizo.atk = 55;
         Cadoizo.def = 45;
         Cadoizo.taux = 15;
@@ -213,8 +213,8 @@ namespace glimac {
 
         Airmure.nom = "AIRMURE";
         Airmure.type = 'R';
-        Airmure.pvMax = 100;
-        Airmure.pvNow = 100;
+        Airmure.pvMax = 65;
+        Airmure.pvNow = 65;
         Airmure.atk = 80;
         Airmure.def = 140;
         Airmure.taux = 10;
@@ -229,8 +229,8 @@ namespace glimac {
 
         Queulorior.nom = "QUEULORIOR";
         Queulorior.type = 'N';
-        Queulorior.pvMax = 100;
-        Queulorior.pvNow = 100;
+        Queulorior.pvMax = 55;
+        Queulorior.pvNow = 55;
         Queulorior.atk = 20;
         Queulorior.def = 35;
         Queulorior.taux = 18;
@@ -245,8 +245,8 @@ namespace glimac {
 
         Ecremeuh.nom = "ECREMEUH";
         Ecremeuh.type = 'N';
-        Ecremeuh.pvMax = 100;
-        Ecremeuh.pvNow = 100;
+        Ecremeuh.pvMax = 95;
+        Ecremeuh.pvNow = 95;
         Ecremeuh.atk = 80;
         Ecremeuh.def = 100;
         Ecremeuh.taux = 15;
@@ -261,8 +261,8 @@ namespace glimac {
 
         Tenefix.nom = "TENEFIX";
         Tenefix.type = 'R';
-        Tenefix.pvMax = 100;
-        Tenefix.pvNow = 100;
+        Tenefix.pvMax = 50;
+        Tenefix.pvNow = 50;
         Tenefix.atk = 75;
         Tenefix.def = 75;
         Tenefix.taux = 18;
@@ -277,8 +277,8 @@ namespace glimac {
 
         Mysdibule.nom = "MYSDIBULE";
         Mysdibule.type = 'N';
-        Mysdibule.pvMax = 100;
-        Mysdibule.pvNow = 100;
+        Mysdibule.pvMax = 50;
+        Mysdibule.pvNow = 50;
         Mysdibule.atk = 85;
         Mysdibule.def = 85;
         Mysdibule.taux = 18;
@@ -293,8 +293,8 @@ namespace glimac {
 
         Posipi.nom = "POSIPI";
         Posipi.type = 'E';
-        Posipi.pvMax = 100;
-        Posipi.pvNow = 100;
+        Posipi.pvMax = 60;
+        Posipi.pvNow = 60;
         Posipi.atk = 50;
         Posipi.def = 40;
         Posipi.taux = 80;
@@ -309,8 +309,8 @@ namespace glimac {
 
         Negapi.nom = "NEGAPI";
         Negapi.type = 'E';
-        Negapi.pvMax = 100;
-        Negapi.pvNow = 100;
+        Negapi.pvMax = 60;
+        Negapi.pvNow = 60;
         Negapi.atk = 50;
         Negapi.def = 40;
         Negapi.taux = 80;
@@ -325,8 +325,8 @@ namespace glimac {
 
         Muciole.nom = "MUCIOLE";
         Muciole.type = 'G';
-        Muciole.pvMax = 100;
-        Muciole.pvNow = 100;
+        Muciole.pvMax = 65;
+        Muciole.pvNow = 65;
         Muciole.atk = 75;
         Muciole.def = 75;
         Muciole.taux = 60;
@@ -341,8 +341,8 @@ namespace glimac {
 
         Lumivole.nom = "LUMIVOLE";
         Lumivole.type = 'G';
-        Lumivole.pvMax = 100;
-        Lumivole.pvNow = 100;
+        Lumivole.pvMax = 65;
+        Lumivole.pvNow = 65;
         Lumivole.atk = 75;
         Lumivole.def = 75;
         Lumivole.taux = 60;
@@ -357,8 +357,8 @@ namespace glimac {
 
         Chartor.nom = "CHARTOR";
         Chartor.type = 'F';
-        Chartor.pvMax = 100;
-        Chartor.pvNow = 100;
+        Chartor.pvMax = 70;
+        Chartor.pvNow = 70;
         Chartor.atk = 85;
         Chartor.def = 140;
         Chartor.taux = 35;
@@ -374,8 +374,8 @@ namespace glimac {
 
         Spinda.nom = "SPINDA";
         Spinda.type = 'N';
-        Spinda.pvMax = 100;
-        Spinda.pvNow = 100;
+        Spinda.pvMax = 60;
+        Spinda.pvNow = 60;
         Spinda.atk = 60;
         Spinda.def = 60;
         Spinda.taux = 60;
@@ -390,8 +390,8 @@ namespace glimac {
 
         Mangriff.nom = "MANGRIFF";
         Mangriff.type = 'N';
-        Mangriff.pvMax = 100;
-        Mangriff.pvNow = 100;
+        Mangriff.pvMax = 73;
+        Mangriff.pvNow = 73;
         Mangriff.atk = 115;
         Mangriff.def = 60;
         Mangriff.taux = 35;
@@ -406,8 +406,8 @@ namespace glimac {
 
         Seviper.nom = "SEVIPER";
         Seviper.type = 'N';
-        Seviper.pvMax = 100;
-        Seviper.pvNow = 100;
+        Seviper.pvMax = 73;
+        Seviper.pvNow = 73;
         Seviper.atk = 115;
         Seviper.def = 60;
         Seviper.taux = 35;
@@ -422,8 +422,8 @@ namespace glimac {
 
         Seleroc.nom = "SELEROC";
         Seleroc.type = 'R';
-        Seleroc.pvMax = 100;
-        Seleroc.pvNow = 100;
+        Seleroc.pvMax = 90;
+        Seleroc.pvNow = 90;
         Seleroc.atk = 55;
         Seleroc.def = 65;
         Seleroc.taux = 15;
@@ -438,8 +438,8 @@ namespace glimac {
 
         Solaroc.nom = "SOLAROC";
         Solaroc.type = 'R';
-        Solaroc.pvMax = 100;
-        Solaroc.pvNow = 100;
+        Solaroc.pvMax = 90;
+        Solaroc.pvNow = 90;
         Solaroc.atk = 55;
         Solaroc.def = 65;
         Solaroc.taux = 15;
@@ -454,8 +454,8 @@ namespace glimac {
 
         Morpheo.nom = "MORPHEO";
         Morpheo.type = 'N';
-        Morpheo.pvMax = 100;
-        Morpheo.pvNow = 100;
+        Morpheo.pvMax = 70;
+        Morpheo.pvNow = 70;
         Morpheo.atk = 70;
         Morpheo.def = 70;
         Morpheo.taux = 70;
@@ -470,8 +470,8 @@ namespace glimac {
 
         Kecleon.nom = "KECLEON";
         Kecleon.type = 'N';
-        Kecleon.pvMax = 100;
-        Kecleon.pvNow = 100;
+        Kecleon.pvMax = 60;
+        Kecleon.pvNow = 60;
         Kecleon.atk = 90;
         Kecleon.def = 70;
         Kecleon.taux = 80;
@@ -502,8 +502,8 @@ namespace glimac {
 
         Absol.nom = "ABSOL";
         Absol.type = 'N';
-        Absol.pvMax = 100;
-        Absol.pvNow = 100;
+        Absol.pvMax = 65;
+        Absol.pvNow = 65;
         Absol.atk = 130;
         Absol.def = 60;
         Absol.taux = 12;
@@ -534,8 +534,8 @@ namespace glimac {
 
         Lovdisc.nom = "LOVDISC";
         Lovdisc.type = 'W';
-        Lovdisc.pvMax = 100;
-        Lovdisc.pvNow = 100;
+        Lovdisc.pvMax = 43;
+        Lovdisc.pvNow = 43;
         Lovdisc.atk = 30;
         Lovdisc.def = 55;
         Lovdisc.taux = 88;
@@ -551,8 +551,8 @@ namespace glimac {
 
         Pachirisu.nom = "PACHIRISU";
         Pachirisu.type = 'E';
-        Pachirisu.pvMax = 100;
-        Pachirisu.pvNow = 100;
+        Pachirisu.pvMax = 60;
+        Pachirisu.pvNow = 60;
         Pachirisu.atk = 90;
         Pachirisu.def = 70;
         Pachirisu.taux = 80;
@@ -567,8 +567,8 @@ namespace glimac {
 
         Pijako.nom = "PIJAKO";
         Pijako.type = 'N';
-        Pijako.pvMax = 100;
-        Pijako.pvNow = 100;
+        Pijako.pvMax = 76;
+        Pijako.pvNow = 76;
         Pijako.atk = 45;
         Pijako.def = 70;
         Pijako.taux = 75;
@@ -583,8 +583,8 @@ namespace glimac {
 
         Spiritomb.nom = "SPIRITOMB";
         Spiritomb.type = 'R';
-        Spiritomb.pvMax = 100;
-        Spiritomb.pvNow = 100;
+        Spiritomb.pvMax = 108;
+        Spiritomb.pvNow = 108;
         Spiritomb.atk = 92;
         Spiritomb.def = 108;
         Spiritomb.taux = 39;
@@ -599,8 +599,8 @@ namespace glimac {
 
         Vortente.nom = "VORTENTE";
         Vortente.type = 'G';
-        Vortente.pvMax = 100;
-        Vortente.pvNow = 100;
+        Vortente.pvMax = 74;
+        Vortente.pvNow = 74;
         Vortente.atk = 100;
         Vortente.def = 72;
         Vortente.taux = 78;
@@ -615,8 +615,8 @@ namespace glimac {
 
         Motisma.nom = "MOTISMA";
         Motisma.type = 'N';
-        Motisma.pvMax = 100;
-        Motisma.pvNow = 100;
+        Motisma.pvMax = 50;
+        Motisma.pvNow = 50;
         Motisma.atk = 65;
         Motisma.def = 107;
         Motisma.taux = 15;
