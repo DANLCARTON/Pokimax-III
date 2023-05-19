@@ -6,6 +6,12 @@
 
 namespace glimac {
 
+    int fact(int n) {
+        long int res = 1;
+        for (int i = 2; i <= n; ++i) res*=i;
+        return res;
+    }
+
     float getPFromId(int id) {
         float p = (float)id/100;
         while (p > 1) --p;
@@ -39,7 +45,15 @@ namespace glimac {
         return val < p ? true : false;
     }
 
+    float binomiale(int id, int k, int n) {
+        float p = getPFromId(id);
+        float Cnk = (float)fact(n)/((float)fact(k)*(float)fact(n-k));
+        float Pk = Cnk*std::pow(p, k)*std::pow(1-p, n-k);
+        return Pk;
+    }
+
     // - - - - - - A L E A T O I R E   A   D E N S I T E - - - - - - 
+    // - - - - - - O U   U N   T R U C   D U   G E N R E - - - - - -  
 
     float gauss(float val) {
         return (1/(std::sqrt(2*M_PI)))*std::exp(-2.0*val*val);

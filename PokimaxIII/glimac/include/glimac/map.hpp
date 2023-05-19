@@ -78,11 +78,17 @@ namespace glimac {
 
         // On définit tous les pokémon
         
-        /*
-        for (int i = 0; i < 100; ++i) {
-            std::cout << bernouilli(uniforme()) << std::endl;
-        }
-        */
+
+        std::cout << "1 1" << binomiale(id, 1, 1) << std::endl;
+        std::cout << "1 2" << binomiale(id, 1, 2) << std::endl;
+        std::cout << "2 2" << binomiale(id, 2, 2) << std::endl;
+        std::cout << "1 3" << binomiale(id, 1, 3) << std::endl;
+        std::cout << "2 3" << binomiale(id, 2, 3) << std::endl;
+        std::cout << "3 3" << binomiale(id, 3, 3) << std::endl;
+        std::cout << "1 4" << binomiale(id, 1, 4) << std::endl;
+        std::cout << "2 4" << binomiale(id, 2, 4) << std::endl;
+        std::cout << "3 4" << binomiale(id, 3, 4) << std::endl;
+        std::cout << "4 4" << binomiale(id, 4, 4) << std::endl;
 
         pokemon Pikachu = definePikachu();
         pokemon Canarticho = defineCanarticho();
