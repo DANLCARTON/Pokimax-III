@@ -20,10 +20,15 @@ namespace glimac {
 
     // - - - - - - A L E A T O I R E   C L A S S I Q U E S - - - - - - 
 
+
+    // UNIFORME
+    // -> un peu tout
     float uniforme() {
         return static_cast<float>(rand())/RAND_MAX; // nombre aléatoire entre 0 et 1 distribué de manière uniforme.
     }
 
+    // GEOMETRIQUE
+    // -> sert pour les estimations
     float probaGeometrique(int id, int k) {
         float p = getPFromId(id);
         return std::pow(1-p, k-1)*p;
@@ -50,11 +55,15 @@ namespace glimac {
         return k;
     }
 
+    // BERNOULLI
+    // -> est-ce que l'attaque touche ou pas
     bool bernouilli(float p) {
         float val = uniforme();
         return val < p ? true : false;
     }
 
+    // BINOMIALE
+    // -> capture de pokémon
     float binomiale(int id, int k, int n) {
         float p = getPFromId(id);
         float Cnk = (float)fact(n)/((float)fact(k)*(float)fact(n-k));
@@ -62,6 +71,8 @@ namespace glimac {
         return Pk;
     }
 
+    // POISSON
+    // -> génération du nombre de pokémon sur la map
     int poisson(float lambda) {
         float L = std::exp(-lambda);
         float p = 1.0;
@@ -86,6 +97,8 @@ namespace glimac {
         return 2*val;
     }
 
+    // UNIFORME A DENSITE je crois
+    // -> emplacement des pokémon sur la map.
     float densite(int id, int courbe) {
         float val = uniforme();
         if (courbe == 1) {
