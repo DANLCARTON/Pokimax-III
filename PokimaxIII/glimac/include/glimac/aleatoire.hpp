@@ -40,6 +40,16 @@ namespace glimac {
         return probaGeometrique(id, tries);
     }   
 
+    int essaisGeometrique(float p) {
+        int k = 1;
+        float Px = std::pow(1-p, k-1)*p;
+        while(Px < 0.95) {
+            ++k;
+            Px += std::pow(1-p, k-1)*p;
+        }
+        return k;
+    }
+
     bool bernouilli(float p) {
         float val = uniforme();
         return val < p ? true : false;
@@ -50,6 +60,19 @@ namespace glimac {
         float Cnk = (float)fact(n)/((float)fact(k)*(float)fact(n-k));
         float Pk = Cnk*std::pow(p, k)*std::pow(1-p, n-k);
         return Pk;
+    }
+
+    int poisson(float lambda) {
+        float L = std::exp(-lambda);
+        float p = 1.0;
+        int k = 0;
+
+        while (p > L) {
+            ++k;
+            p *= uniforme();
+        }
+
+        return k-1;
     }
 
     // - - - - - - A L E A T O I R E   A   D E N S I T E - - - - - - 

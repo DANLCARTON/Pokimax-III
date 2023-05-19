@@ -43,6 +43,8 @@ glimac/map.hpp
 -
 glimac/aleatoire.hpp
 -
+iomanip
+-
 
 ../glimac/include/glimac/glm.hpp
 glm/glm.hpp

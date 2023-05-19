@@ -28,6 +28,10 @@ namespace glimac {
         std::cout << "\x1B[2J\x1B[H"; // on efface le contenu de la console
     }
 
+    void wait(int time) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(time)); // on attent 1500ms puis
+    }
+
     int intro() {
         
         entreLigne();

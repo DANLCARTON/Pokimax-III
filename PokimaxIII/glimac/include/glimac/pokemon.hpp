@@ -14,7 +14,32 @@ namespace glimac {
         int taux; // taux de capture (100 = égal facile à capturer, 0 = impossible (littéralement) à capturer)
         int prc;
         int rare;
+        std::string getTypeName();
     }pokemon;
+
+    std::string pokemon::getTypeName() {
+        switch(this->type) {
+            case ('E'):
+                return "Electrik";
+                break;
+            case ('N'):
+                return "Normal";
+                break;
+            case ('W'):
+                return "Eau";
+                break;
+            case ('R'):
+                return "Roche";
+                break;
+            case ('F'):
+                return "Feu";
+                break;
+            case('G'):
+                return "Plante";
+                break;
+        }
+        return "none";
+    }
 
     pokemon definePikachu() {
         pokemon Pikachu;

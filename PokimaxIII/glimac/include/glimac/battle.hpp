@@ -12,6 +12,7 @@
 #include <glimac/pokemon.hpp>
 #include <glimac/map.hpp>
 #include <glimac/aleatoire.hpp>
+#include <iomanip>
 
 
 namespace glimac {
@@ -30,12 +31,13 @@ namespace glimac {
     // F - CAPTURE   G - FUITE
 
     std::cout << "                  " << Pokemon2.nom << std::endl;
-    std::cout << "                  " << Pokemon2.pvNow << "/" << Pokemon2.pvMax << std::endl;
+    std::cout << "                  PV " << Pokemon2.pvNow << "/" << Pokemon2.pvMax << std::endl;
     std::cout << "   " << Pokemon1.nom << std::endl;
-    std::cout << "   " << Pokemon1.pvNow << "/" << Pokemon1.pvMax << std::endl << std::endl;
+    std::cout << "   PV " << Pokemon1.pvNow << "/" << Pokemon1.pvMax << std::endl << std::endl;
     std::cout << "Un " << Pokemon2.nom << " sauvage apparait !" << std::endl << std::endl;
     std::cout << "R - ATTAQUE   T - POKEMON" << std::endl;
-    std::cout << "F - CAPTURE   G - FUITE";
+    std::cout << "F - CAPTURE   G - FUITE" << std::endl;
+    std::cout << "V - ESTIMATIONS";
 }
 
 
@@ -347,7 +349,39 @@ void battleStart(pokemon* Pokemon, pokemon Foe, int id) {
                 lireLigne("\n\nVous prenez la fuite !!!");
                 entreLigne();
                 ACTION = false; // ACTION devient Faux, le combat s'arrête, retour à la map
-            } else { // Si c'est n'importe quelle autre touche
+            } else if (act == 'v') {
+                // probabilté de toucher l'adversaire
+                lireLigne("\n\nVoici quelques estimations pour le tour à venir :");
+                
+                
+                lireLigne("\nATTAQUE");
+                float sensiFoe = calculSensibilite(Pokemon[0], Foe);
+                float sensiPokemon = calculSensibilite(Foe, Pokemon[0]);
+                lireLigne("- Votre pokémon est de type "+Pokemon[0].getTypeName()+", le pokémon adverse est de type "+Foe.getTypeName()+".");
+                lireLigne("- La puissance de vos attaques sera multipliée par "+std::to_string(sensiFoe)+".");
+                lireLigne("- La puissance des attaques de votre adversaire sera multipliée par "+std::to_string(sensiPokemon)+".");
+                lireLigne("- Votre pokémon à une précision de "+std::to_string(Pokemon[0].prc)+", le pokémon adverse a une précision de "+std::to_string(Foe.prc)+".");
+                float prcPokemon = getPrecision(Pokemon[0].prc)*100;
+                float prcFoe = getPrecision(Foe.prc)*100;
+                int essPokemon = essaisGeometrique(prcPokemon/100);
+                int essFoe = essaisGeometrique(prcFoe/100);
+                float pvFoe = ((27*Pokemon[0].atk)/Foe.def)*sensiFoe;
+                float pvPokemon = ((27*Foe.atk)/Pokemon[0].def)*sensiPokemon;
+                lireLigne("- Vous avez "+std::to_string((int)prcPokemon)+"% de chances de toucher votre adversaire, vous devriez y arriver à l'essai n°"+std::to_string(essPokemon)+".");
+                lireLigne("- Il perdra "+std::to_string(pvFoe)+"PV");
+                lireLigne("- Votre adversaire a "+std::to_string((int)prcFoe)+"% de chances de toucher votre Pokemon, il devrait y arriver à l'essai n°"+std::to_string(essFoe)+".");
+                lireLigne("- Vous perdrez "+std::to_string(pvPokemon)+"PV");
+                wait(1500);
+                lireLigne("\nCAPTURE");
+                lireLigne("- Le pokémon adverse a un taux de capture de "+std::to_string(Foe.taux)+".");
+                float rate = binomiale(id, 4, 4)*((float)Foe.taux/2)*(1-(((float)Foe.pvNow-1)/(float)Foe.pvMax))*100;
+                lireLigne("- Vous aurez "+std::to_string(rate)+"% de chances de l'attraper.");
+                int essCapture = essaisGeometrique(rate/100);
+                lireLigne("- Vous devriez y arriver à l'essai n°"+std::to_string(essCapture)+". Essayez de réduire ses PV pour améliorer vos chances !");
+                entreLigne();
+                entreLigne();
+                entreLigne();
+            }else { // Si c'est n'importe quelle autre touche
                 std::cout << std::endl; // en gros rien
             }
             displayBattle(Pokemon[0], Foe); // On actualiste l'écran de combat
