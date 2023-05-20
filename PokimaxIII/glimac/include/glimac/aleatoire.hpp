@@ -20,6 +20,8 @@ namespace glimac {
 
     // - - - - - - A L E A T O I R E   C L A S S I Q U E S - - - - - - 
 
+    // Changer la fonction de placement des points genre chaque point à un pokémon prédéfini
+    // Utiliser la loi Hypergéométrique pour évaluer le nombre de pokémon rares sur la map ????
 
     // UNIFORME
     // -> un peu tout

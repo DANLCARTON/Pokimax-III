@@ -17,6 +17,19 @@
 
 namespace glimac {
 
+    class Point {
+        public:
+            Point(int x, int y, pokemon Poke) {this->x = x; this->y = y; this->Poke = Poke;};
+            ~Point() = default;
+            int x;
+            int y;
+            pokemon Poke;
+    };
+
+    pokemon randomPokemon(std::vector<pokemon> &list) {
+        
+    }
+
     void displayMap(std::string map[], int haut) {
         std::cout << "\x1B[2J\x1B[H"; // permet d'effacer le contenu de la console.
         std::cout << map[0] << std::endl;  // affiche la première ligne
@@ -62,6 +75,7 @@ namespace glimac {
     }
 
     void genererPoints (std::string map[], int larg, int haut, int shape, int id) {
+        std::vector<Point> points;
         float lambda = getPFromId(id)*(haut/3)*(larg/3);
         int nbPoke = poisson(lambda);
         lireLigne("- d'après votre id et les paramètres que vous avez rentré, le nombre de pokémon qui apparaîtront sur la map sera calculé par une loi de Poisson de paramètre lambda = "+std::to_string(lambda)+".");
@@ -82,6 +96,7 @@ namespace glimac {
         for (int i = 0; i <= nbPoke; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
             int coordY = floor(densite(0, shape) * (haut-2))+1;
             int coordX = floor(densite(0, shape) * (larg-2))+1;
+            points.push_back(Point(coordX, coordY))
             map[coordY][coordX] = 'x';
         }
     }
