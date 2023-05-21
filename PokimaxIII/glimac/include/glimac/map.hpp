@@ -26,8 +26,27 @@ namespace glimac {
             pokemon Poke;
     };
 
+    std::vector<pokemon> pokemonVector(pokemon list[]) {
+        std::vector<pokemon> pokeVec;
+        for (int i = 0; i <= 95; ++i) {
+            for (int j = 0; j <= list[i].rare; ++j) {
+                pokeVec.push_back(list[i]);
+            }
+        }
+        return pokeVec;
+    }
+
     pokemon randomPokemon(std::vector<pokemon> &list) {
-        
+        int nb = uniforme() * list.size();
+        return list[nb];
+    }
+
+    pokemon getPokemon(int x, int y, std::vector<Point> &points) {
+        for (Point &point : points) {
+            if (point.x == x && point.y == y) {
+                return point.Poke;
+            }
+        }
     }
 
     void displayMap(std::string map[], int haut) {
@@ -74,7 +93,7 @@ namespace glimac {
         */
     }
 
-    void genererPoints (std::string map[], int larg, int haut, int shape, int id) {
+    std::vector<Point> genererPoints (std::string map[], int larg, int haut, int shape, int id, std::vector<pokemon> pokeVec) {
         std::vector<Point> points;
         float lambda = getPFromId(id)*(haut/3)*(larg/3);
         int nbPoke = poisson(lambda);
@@ -92,13 +111,19 @@ namespace glimac {
                 break;
             break;
         }
+
+        int nbPokeRareEstimation = hypergeometrique(286, 62, nbPoke, 1000);
+
+        lireLigne("- D'après une estimation réalisée selon une loi hypergeometrique, "+std::to_string(nbPokeRareEstimation)+" pokémon rares devraient apparaître !");
+
         wait(3000);
         for (int i = 0; i <= nbPoke; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
             int coordY = floor(densite(0, shape) * (haut-2))+1;
             int coordX = floor(densite(0, shape) * (larg-2))+1;
-            points.push_back(Point(coordX, coordY))
+            points.push_back(Point(coordX, coordY, randomPokemon(pokeVec)));
             map[coordY][coordX] = 'x';
         }
+        return points;
     }
 
     void mapStart(int id) {
@@ -230,7 +255,14 @@ namespace glimac {
 
         apparenceMap(map, larg, haut); // on génère l'apparence de la map
 
-        genererPoints(map, larg, haut, shape, id); // on génère l'emplacement des points
+        std::vector<pokemon> pokeVec = pokemonVector(listeDesPokemon);
+
+        std::vector<Point> points = genererPoints(map, larg, haut, shape, id, pokeVec); // on génère l'emplacement des points
+
+        for (Point &p : points) {
+            std::cout << p.x << " " << p.y << " " << p.Poke.nom << std::endl;
+        }
+        wait(5000);
 
         int coordX = 1; // coordonnée sur l'axe X du Personnage
         int coordY = 1; // coordonnée sur l'axe Y du Personnage
@@ -249,10 +281,8 @@ namespace glimac {
                     map[coordY][coordX] = ' '; // on remplace l'emplacement ou on est par du vide
                     coordY--; // on monte d'un cran sur l'axe Y
                     if (map[coordY][coordX] == 'x') { // on vérifie si la case de destination est occupée par un x
-                        std::random_device rd; //                           ╗
-                        std::mt19937 gen(rd()); //                          ║ Permet de tirer un nombre aléatoire entre 0 et 50
-                        std::uniform_int_distribution<> distrib(0, 95);//   ╝
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
+                        pokemon poke = getPokemon(coordX, coordY, points);
+                        battleStart(playerTeam, poke, id);
                     }
                     map[coordY][coordX] = '#'; // on remplace la nouvelle coordonnée par notre personnage
                     bool NOKO = verifDefaite(playerTeam); // NOKO est true si au moins un des pokémon est en état de se battre
@@ -272,10 +302,8 @@ namespace glimac {
                     map[coordY][coordX] = ' ';
                     coordY++; // on descend d'un cran sur l'axe Y
                     if (map[coordY][coordX] == 'x') {
-                        std::random_device rd; 
-                        std::mt19937 gen(rd());
-                        std::uniform_int_distribution<> distrib(0, 95);
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
+                        pokemon poke = getPokemon(coordX, coordY, points);
+                        battleStart(playerTeam, poke, id);
                     }
                     map[coordY][coordX] = '#';
                     bool NOKO = verifDefaite(playerTeam);
@@ -295,10 +323,8 @@ namespace glimac {
                     map[coordY][coordX] = ' ';
                     coordX--;
                     if (map[coordY][coordX] == 'x') {
-                        std::random_device rd;
-                        std::mt19937 gen(rd());
-                        std::uniform_int_distribution<> distrib(0, 95);
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
+                        pokemon poke = getPokemon(coordX, coordY, points);
+                        battleStart(playerTeam, poke, id);
                     }
                     map[coordY][coordX] = '#';
                     bool NOKO = verifDefaite(playerTeam);
@@ -318,10 +344,8 @@ namespace glimac {
                     map[coordY][coordX] = ' ';
                     coordX++;
                     if (map[coordY][coordX] == 'x') {
-                        std::random_device rd;
-                        std::mt19937 gen(rd());
-                        std::uniform_int_distribution<> distrib(0, 95);
-                        battleStart(playerTeam, listeDesPokemon[distrib(gen)], id);
+                        pokemon poke = getPokemon(coordX, coordY, points);
+                        battleStart(playerTeam, poke, id);
                     }
                     map[coordY][coordX] = '#';
                     bool NOKO = verifDefaite(playerTeam);

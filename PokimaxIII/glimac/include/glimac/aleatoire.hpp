@@ -22,6 +22,7 @@ namespace glimac {
 
     // Changer la fonction de placement des points genre chaque point à un pokémon prédéfini
     // Utiliser la loi Hypergéométrique pour évaluer le nombre de pokémon rares sur la map ????
+    // 62 pokemon rares parmi 286 pokemon. 
 
     // UNIFORME
     // -> un peu tout
@@ -86,6 +87,32 @@ namespace glimac {
         }
 
         return k-1;
+    }
+
+    // HYPERGEOMETRIQUE
+    // -> estimation du nombre de pokémon rares au lancement du jeu. 
+
+    int hypergeometrique(int n, int m, int x, int iter) {
+        int mTotal = 0;
+
+        for (int i = 0; i < iter; ++i) {
+            int xSample = 0;
+
+            for (int j = 0; j < x; ++j) {
+                // Générer un nombre aléatoire entre 0 et la taille de la population
+                int val = uniforme()*n;
+
+                // Si le nombre aléatoire est inférieur au nombre d'éléments rares dans la population,
+                // alors on compte cet élément rare dans l'échantillon
+                if (val < m) {
+                    xSample++;
+                }
+            }
+
+            mTotal += xSample;
+        }
+
+        return mTotal / iter;
     }
 
     // - - - - - - A L E A T O I R E   A   D E N S I T E - - - - - - 
