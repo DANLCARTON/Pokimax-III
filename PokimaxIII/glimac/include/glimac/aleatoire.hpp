@@ -91,7 +91,7 @@ namespace glimac {
 
     // HYPERGEOMETRIQUE
     // -> estimation du nombre de pokémon rares au lancement du jeu. 
-
+    // -> parmi les 286 pokémon -pokemon * rareté- 62 sont rares. 
     int hypergeometrique(int n, int m, int x, int iter) {
         int mTotal = 0;
 
