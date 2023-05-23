@@ -98,7 +98,7 @@ namespace glimac {
         std::vector<Point> points;
         float lambda = getPFromId(id)*(haut/3)*(larg/3);
         int nbPoke = poisson(lambda);
-        lireLigne("- d'après votre id et les paramètres que vous avez rentré, le nombre de pokémon qui apparaîtront sur la map sera calculé par une loi de Poisson de paramètre lambda = "+std::to_string(lambda)+".");
+        //lireLigne("- d'après votre id et les paramètres que vous avez rentré, le nombre de pokémon qui apparaîtront sur la map sera calculé par une loi de Poisson de paramètre lambda = "+std::to_string(lambda)+".");
         lireLigne("- "+std::to_string(nbPoke)+" Pokémon apparaîtront sur la map.");
         switch(shape) {
             case(0):
@@ -115,7 +115,8 @@ namespace glimac {
 
         int nbPokeRareEstimation = hypergeometrique(286, 62, nbPoke, 1000);
 
-        lireLigne("- D'après une estimation réalisée selon une loi hypergeometrique, "+std::to_string(nbPokeRareEstimation)+" pokémon rares devraient apparaître !");
+        //lireLigne("- D'après une estimation réalisée selon une loi hypergeometrique, "+std::to_string(nbPokeRareEstimation)+" pokémon rares devraient apparaître !");
+        lireLigne("- "+std::to_string(nbPokeRareEstimation)+" pokémon rares devraient apparaître !");
 
         wait(3000);
         for (int i = 0; i <= nbPoke; i++) { // on génerera un nombre de points égal à ((larg/10)*(haut/10))*2
@@ -244,7 +245,7 @@ namespace glimac {
         const int hauteurMax = haut; // il faut absolument que ce soit une const pour les tailles de tableau
         std::string* map = new std::string[hauteurMax]; // tableau de strings map = ["#######", "#     #", "#     #", "#######"] en gros
         int larg;
-        std::cout << "largeur de la map (conseillee : 50): ";
+        std::cout << "largeur de la map (conseillee : 50) : ";
         std::cin >> larg; // largeur de la map
         int shape;
         std::cout << "forme de la map (0 = normal, 1 = Gauss, 2 = 2X) : ";
