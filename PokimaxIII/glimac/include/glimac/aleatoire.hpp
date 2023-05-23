@@ -127,6 +127,7 @@ namespace glimac {
     }
 
     // UNIFORME A DENSITE je crois
+    // surement oui
     // -> emplacement des pokémon sur la map.
     float densite(int id, int courbe) {
         float val = uniforme();

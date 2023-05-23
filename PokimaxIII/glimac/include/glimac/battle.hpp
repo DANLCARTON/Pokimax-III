@@ -271,10 +271,10 @@ void battleStart(pokemon* Pokemon, pokemon Foe, int id) {
     std::cout << "\x1B[2J\x1B[H";
 
     if (Foe.rare == 1) {
-        lireLigne("- Vous allez recontrer un pokémon très rare !!");
+        lireLigne("- Vous allez rencontrer un pokémon très rare !!");
         wait(1500);
     } else if (Foe.rare == 2) {
-        lireLigne("- Vous allez recontrer un pokémon rare !");
+        lireLigne("- Vous allez rencontrer un pokémon rare !");
         wait(1500);
     }
 

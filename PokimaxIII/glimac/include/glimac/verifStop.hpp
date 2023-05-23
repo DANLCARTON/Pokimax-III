@@ -25,7 +25,7 @@ namespace glimac {
         bool VICTOIRE = true; // on initie VICTOIRE à vrai
         for (int i=0; i<=haut-1; i++) { //   ╗
             for (int j=0; j<=larg; j++) { // ╝ On défile case par case.
-                if (map[i][j] == 'x') { // si il y a un "x"
+                if (map[i][j] == '?') { // si il y a un "x"
                     VICTOIRE = false; // VICTOIRE est donc faux.
                 }
             }

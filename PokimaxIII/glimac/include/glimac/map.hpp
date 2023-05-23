@@ -47,6 +47,7 @@ namespace glimac {
                 return point.Poke;
             }
         }
+        return points[(int)(uniforme()*points.size())].Poke;
     }
 
     void displayMap(std::string map[], int haut) {
@@ -121,7 +122,7 @@ namespace glimac {
             int coordY = floor(densite(0, shape) * (haut-2))+1;
             int coordX = floor(densite(0, shape) * (larg-2))+1;
             points.push_back(Point(coordX, coordY, randomPokemon(pokeVec)));
-            map[coordY][coordX] = 'x';
+            map[coordY][coordX] = '?';
         }
         return points;
     }
@@ -237,10 +238,6 @@ namespace glimac {
 
         pokemon listeDesPokemon[96] = {Pikachu, Canarticho, Kangourex, Scarabrute, Tauros, Locklass, Insolourdo, Qwilfish, Caratroc, Scarinho, Corayon, Cadoizo, Airmure, Queulorior, Ecremeuh, Tenefix, Mysdibule, Posipi, Negapi, Muciole, Lumivole, Chartor, Spinda, Mangriff, Seviper, Seleroc, Solaroc, Morpheo, Kecleon, Tropius, Absol, Relicanth, Lovdisc, Pachirisu, Pijako, Spiritomb, Vortente, Motisma, Nanmeouie, Judokrak, Karaclee, Bargantua, Maracachi, Cryptero, Emolga, Mamanbo, Hexagel, Limonde, Drakkarmin, Frison, Aflamanoir, Fermite, Couafarel, Brutalibre, Dedenne, Strassie, Trousselin, Brocelome, Plumeline, Froussardine, Guerilande, Gouroutan, Quartermac, Concombaffe, Meteno, Dodoala, Boumata, Togedemaru, Mimiqui, Denticrisse, Draieul, Sinistrail, Katagami, Nigosier, Hexadron, Wimessir, Duralugon, Wattapik, Dolman, Bekaglacon, Morpeko, Tapatoes, Craparoi, Lestombaile, Ferdeter, Flamenroule, Delestin, Oyacata, Nigirigon, Motorizard, Chongjian, Baojian, Dinglu, Yuyu, RugitLune, GardeDeFer};
 
-        // Une liste pour l'équipe du joueur
-
-        pokemon playerTeam[6] = {Pikachu};
-
         int haut;
         std::cout << "hauteur de la map (conseillee : 25) : ";
         std::cin >> haut; // hauteur de la map
@@ -257,6 +254,8 @@ namespace glimac {
 
         std::vector<pokemon> pokeVec = pokemonVector(listeDesPokemon);
 
+        pokemon playerTeam[6] = {Pikachu};
+
         std::vector<Point> points = genererPoints(map, larg, haut, shape, id, pokeVec); // on génère l'emplacement des points
 
         for (Point &p : points) {
@@ -267,7 +266,7 @@ namespace glimac {
         int coordX = 1; // coordonnée sur l'axe X du Personnage
         int coordY = 1; // coordonnée sur l'axe Y du Personnage
 
-        map[coordY][coordX] = '#'; // on remplace le point 1,1 par le personnage (le point de repère est en haut à gauche)
+        map[coordY][coordX] = '0'; // on remplace le point 1,1 par le personnage (le point de repère est en haut à gauche)
 
         displayMap(map, haut); // on affiche la map
 
@@ -280,11 +279,11 @@ namespace glimac {
                 if (dir == 'z' && coordY > 1) { // si c'est Z et qu'on est pas collé au bord du haut
                     map[coordY][coordX] = ' '; // on remplace l'emplacement ou on est par du vide
                     coordY--; // on monte d'un cran sur l'axe Y
-                    if (map[coordY][coordX] == 'x') { // on vérifie si la case de destination est occupée par un x
+                    if (map[coordY][coordX] == '?') { // on vérifie si la case de destination est occupée par un x
                         pokemon poke = getPokemon(coordX, coordY, points);
                         battleStart(playerTeam, poke, id);
                     }
-                    map[coordY][coordX] = '#'; // on remplace la nouvelle coordonnée par notre personnage
+                    map[coordY][coordX] = '0'; // on remplace la nouvelle coordonnée par notre personnage
                     bool NOKO = verifDefaite(playerTeam); // NOKO est true si au moins un des pokémon est en état de se battre
                     if (!NOKO) { // si NOKO est false
                         entreLigne();
@@ -301,11 +300,11 @@ namespace glimac {
                 } else if (dir == 's' && coordY < haut-2) { // touche S et pas collé au bord du bas
                     map[coordY][coordX] = ' ';
                     coordY++; // on descend d'un cran sur l'axe Y
-                    if (map[coordY][coordX] == 'x') {
+                    if (map[coordY][coordX] == '?') {
                         pokemon poke = getPokemon(coordX, coordY, points);
                         battleStart(playerTeam, poke, id);
                     }
-                    map[coordY][coordX] = '#';
+                    map[coordY][coordX] = '0';
                     bool NOKO = verifDefaite(playerTeam);
                     if (!NOKO) {
                         entreLigne();
@@ -322,11 +321,11 @@ namespace glimac {
                 } else if (dir == 'q' && coordX > 1) { // Si c'est Q et qu'on est pas collé au bord de gauche
                     map[coordY][coordX] = ' ';
                     coordX--;
-                    if (map[coordY][coordX] == 'x') {
+                    if (map[coordY][coordX] == '?') {
                         pokemon poke = getPokemon(coordX, coordY, points);
                         battleStart(playerTeam, poke, id);
                     }
-                    map[coordY][coordX] = '#';
+                    map[coordY][coordX] = '0';
                     bool NOKO = verifDefaite(playerTeam);
                     if (!NOKO) {
                         entreLigne();
@@ -343,11 +342,11 @@ namespace glimac {
                 } else if (dir == 'd' && coordX < larg-1) { // Si c'est D et qu'on est pas collé au bord de droite
                     map[coordY][coordX] = ' ';
                     coordX++;
-                    if (map[coordY][coordX] == 'x') {
+                    if (map[coordY][coordX] == '?') {
                         pokemon poke = getPokemon(coordX, coordY, points);
                         battleStart(playerTeam, poke, id);
                     }
-                    map[coordY][coordX] = '#';
+                    map[coordY][coordX] = '0';
                     bool NOKO = verifDefaite(playerTeam);
                     if (!NOKO) {
                         entreLigne();
