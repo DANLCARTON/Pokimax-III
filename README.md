@@ -211,7 +211,7 @@ float binomiale(int id, int k, int n) {
     return Pk;
 }
 ``` 
-pour une meilleure lisibilité : $$C_n^k=\frac{n!}{k!\times(n-k)!}\\P_k=C_n^k\times p^k(1-p)^{n-k}$$
+pour une meilleure lisibilité : $$C_n^k=\frac{n!}{k!\times(n-k)!}$$ $$P_k=C_n^k\times p^k(1-p)^{n-k}$$
 
 avec comme paramètre `id` l'ID du joueur qui donne la probabilité de succès. 
 
