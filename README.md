@@ -174,8 +174,118 @@ float probaGeometrique(int id, int k) {
 Cette fonction modélise les essais avant d'obtenir un succès et calcule la probabilité d'obtenir la situation modélisée. 
 
 #### Dans le jeu
-- Elle sert lors des estimations. Dans un combat, en utilisant la touche `V`, la loi géométrique est utilisée pour estimer le nombre d'essais nécéssaires avant que votre Pokémon arrive a toucher son adversaire avec un attaque et inversement. Elle sert aussi a estimer le nombre d'essais nécéssaires avant de réussir à capturer le pokémon adverse. 
+Elle sert lors des estimations. Dans un combat, en utilisant la touche `V`, la loi géométrique est utilisée pour estimer le nombre d'essais nécéssaires avant que votre Pokémon arrive a toucher son adversaire avec un attaque et inversement. Elle sert aussi a estimer le nombre d'essais nécéssaires avant de réussir à capturer le pokémon adverse. 
 
+### 3. Loi de Bernoulli
+
+La loi de Bernoulli modélise une situation si ne peut avoir que 2 issues : un succès, de probabilité $p$ et un échec, de probabilité $1-p$.
+
+#### Implémentation
+La fonction permettant de connaitre si l'expérience de bernoulli est un succès est définie comme suit : 
+```cpp
+bool bernouilli(float p) {
+    float val = uniforme();
+    return val < p ? true : false;
+}
+```
+avec le paramètre `p`, une probabilité de succès. 
+
+#### Dans le jeu
+Elle sert en combat, au moment d'attaquer. la loi de Bernoulli est utilisée pour savoir si le pokémon attaquant va réussi à toucher l'autre. en cas de succès, tous les calculs sont réalisés, en cas d'échec une ligne de texte vous indique que le pokémon a raté son attaque. La probabilité `p` donnée en paramètre de la fonction est calculée à partir de la statistique de précision du pokemon. $$p = \frac{\frac{\rm{précision}*90}{130}+20}{100}$$
+
+*(`p` peut être supérieur à 1, votre pokémon touchera à tous les coups)*
+
+### 4. Loi binomiale
+
+La loi binomiale modélise la probabilité d'obtenir un certain nombre de succès de probabilté $p$ parmi un nombre d'essais. 
+
+#### Implémentation
+
+la fonction permettant de connaitre la probabilité de $k$ succès parmi $n$ expériences réalisées est implémentée comme suit : 
+
+``` cpp
+float binomiale(int id, int k, int n) {
+    float p = getPFromId(id);
+    float Cnk = (float)fact(n)/((float)fact(k)*(float)fact(n-k));
+    float Pk = Cnk*std::pow(p, k)*std::pow(1-p, n-k);
+    return Pk;
+}
+``` 
+pour une meilleure lisibilité : $$C_n^k=\frac{n!}{k!\times(n-k)!}\\P_k=C_n^k\times p^k(1-p)^{n-k}$$
+
+avec comme paramètre `id` l'ID du joueur qui donne la probabilité de succès. 
+
+#### Dans le jeu
+
+Elle sert dans les combats, au moment de la capture. Dans les jeux Pokémon originaux, lorsqu'on tente de capturer un pokémon sauvage, la Poké Ball (objet permettant de capturer et dans laquelle est enfermée le Pokémon) tremble 3 fois avant de se refermer et de confirmer la capture. Ici cette situation est modélisée avec une loi de bernoulli. 1 succès parmi 4 essais vaut 1 tremblement, 2 succès parmi 4 essais vaut 2 tremblements, 3 succès parmi 4 essais vaut 3 tremblements et enfin 4 succès parmi 4 essais vaut la fermeture de la Poké Ball. 
+
+d'autres paramètres rentrent en considération lors de la capture, le pourcentage de chances de capturer est calculé ainsi : $$p_{\times100} = \rm{binomiale}(ID, 4, 4)\times\frac{taux}{2}\times\left(1-\frac{PV_{actuels}-1}{PV_{max}}\right)\times100$$
+
+### 5. Loi de Poisson
+
+La loi de Poisson décrit le comportement du nombre d'événements se produisant dans un intervalle temporel ou spacial.
+
+#### Implémentation
+
+La fonction permettant de connaitre le nombre d'événements sur une aire est définie comme suit : 
+
+``` cpp
+int poisson(float lambda) {
+    float L = std::exp(-lambda);
+    float p = 1.0;
+    int k = 0;
+
+    while (p > L) {
+        ++k;
+        p *= uniforme();
+    }
+
+    return k-1;
+}
+```
+
+Elle prend en entrée le paramètre `lambda` calculé à l'avance. 
+
+#### Dans le jeu
+
+Elle sert au tout début du jeu, a donner le nombre de Pokémon (`?`) qui apparaîtront sur la carte. Le paramètre `lambda` est calculé en fonction de la hauteur et de la largeur renseignées, ainsi que d'une probabilité calculée à partir de l'ID du joueur : $$\lambda=p_{ID}\times\frac{\rm{hauteur}}{3}\times\frac{\rm{largeur}}{3}$$
+
+### 6. Loi hypergéométrique
+
+La loi hypergéométrique permet d'obtenir le nombre d'éléments présentant une caractéristique particulière parmi une sélection d'éléments
+
+#### Implémentation
+
+La fonction permettant d'estimer le nombre d'éléments particuliers parmi $x$ éléments, tirés d'une population de $m$ éléments, dans laquelle on retrouve $n$ éléments particuliers est définie comme suit : 
+
+``` cpp
+int hypergeometrique(int n, int m, int x, int iter) {
+        int mTotal = 0;
+        for (int i = 0; i < iter; ++i) {
+            int xSample = 0;
+            for (int j = 0; j < x; ++j) {
+                int val = uniforme()*n;
+                if (val < m) {
+                    xSample++;
+                }
+            }
+            mTotal += xSample;
+        }
+        return mTotal / iter;
+    }
+```
+
+la paramètre `iter` permet de réaliser la simulation un certain nombre de fois et d'obtenir une moyenne. 
+
+#### Dans le jeu
+
+Elle sert au tout début du jeu, juste après la loi de Poisson permettant de donner le nombre de Pokémon qui apparaîtront sur la carte. La Loi hypergéométrique est utilisée pour estimer le nombre de Pokémon rares qui apparaîtront. Chaque Pokémon à une statistique de rareté qui lui est assignée. Un pokémon ayant une valeur 1 ou 2 est considéré comme rare. La valeur va jusqu'à 7. Un Pokémon ayant une valeur de rareté égale à 7 est 7 fois moins rare qu'un Pokémon ayant une rareté de 1. 
+
+En prenant en compte les 96 Pokémon du jeu et en la multipliant par la rareté de chacun, cela nous donne le paramètre $m = 286$. 
+
+En prenant seulement les pokémon considérés comme rare et en les multipliant par leur rareté de respectives, on obtient le paramètre $n=62$
+
+Avec $x$ défini avec la loi de Poisson juste avant et `iter` fixé à 1000.
 
 ## III. Compilation et execution
 dans l'invite de commande utiliser :

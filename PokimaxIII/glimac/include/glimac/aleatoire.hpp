@@ -48,15 +48,15 @@ namespace glimac {
         return probaGeometrique(id, tries);
     }   
 
-    int essaisGeometrique(float p) {
-        int k = 1;
-        float Px = std::pow(1-p, k-1)*p;
-        while(Px < 0.95) {
-            ++k;
-            Px += std::pow(1-p, k-1)*p;
+        int essaisGeometrique(float p) {
+            int k = 1;
+            float Px = std::pow(1-p, k-1)*p;
+            while(Px < 0.95) {
+                ++k;
+                Px += std::pow(1-p, k-1)*p;
+            }
+            return k;
         }
-        return k;
-    }
 
     // BERNOULLI
     // -> est-ce que l'attaque touche ou pas
