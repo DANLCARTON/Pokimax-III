@@ -322,7 +322,7 @@ float gauss(float val) {
     return (1/(std::sqrt(2*M_PI)))*std::exp(-2.0*val*val);
 }
 ```
-Pour une meilleure lisibilité, la fonction `gauss(float val)` renvoie$$\frac{1}{\sqrt{2\pi}}\times e^{-2\rm{val}^2}$$
+Pour une meilleure lisibilité, la fonction `gauss(float val)` renvoie $$\frac{1}{\sqrt{2\pi}}\times e^{-2\rm{val}^2}$$
 
 Cette fonction donne une courde en cloche de gauss centrée sur $0$ et légèrement déformée pour resserrer la "cloche" afin qu'elle soit comprise entre $-1,5$ et $1,5$.
 
