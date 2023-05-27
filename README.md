@@ -383,7 +383,7 @@ Elle sert après avoir fait le choix de la "forme" de la carte. en choisissant 2
 dans l'invite de commande utiliser une fois :
 ```
 ./pkmxIIISetup.sh
-``̀
+```
 puis utiliser
 ```
 ./pkmxIII.sh
