@@ -108,7 +108,7 @@ namespace glimac {
                 lireLigne("- Ils seront distribués suivant une courbe en forme de cloche de Gauss.");
                 break;
             case(2):
-                lireLigne("- Ils seront distribués suivant la courbe de la fonction Y = 2X.");
+                lireLigne("- Ils seront distribués suivant une loi triangulaire de support ]0, 1[ et de mode 1");
                 break;
             break;
         }
@@ -248,7 +248,7 @@ namespace glimac {
         std::cout << "largeur de la map (conseillee : 50) : ";
         std::cin >> larg; // largeur de la map
         int shape;
-        std::cout << "forme de la map (0 = normal, 1 = Gauss, 2 = 2X) : ";
+        std::cout << "forme de la map (0 = normal, 1 = Gauss, 2 = Triangulaire) : ";
         std::cin >> shape;
 
         apparenceMap(map, larg, haut); // on génère l'apparence de la map
@@ -259,10 +259,10 @@ namespace glimac {
 
         std::vector<Point> points = genererPoints(map, larg, haut, shape, id, pokeVec); // on génère l'emplacement des points
 
-        for (Point &p : points) {
+        /*for (Point &p : points) {
             std::cout << p.x << " " << p.y << " " << p.Poke.nom << std::endl;
         }
-        wait(5000);
+        wait(5000);*/
 
         int coordX = 1; // coordonnée sur l'axe X du Personnage
         int coordY = 1; // coordonnée sur l'axe Y du Personnage
