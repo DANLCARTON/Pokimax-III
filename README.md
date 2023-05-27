@@ -380,7 +380,11 @@ Cette fonction simule une loi triangulaire de support $]0 ; 1[$ et de mode fixé
 Elle sert après avoir fait le choix de la "forme" de la carte. en choisissant 2, l'emplacement des `?` sera fait suivant la loi trianglaire avec les paramètres cité précédemment. Tous les Pokémon devraient être distribués vers le coin inférieur gauche de la carte avec ce choix. 
 
 ## III. Compilation et execution
-dans l'invite de commande utiliser :
+dans l'invite de commande utiliser une fois :
+```
+./pkmxIIISetup.sh
+``̀
+puis utiliser
 ```
 ./pkmxIII.sh
 ```
