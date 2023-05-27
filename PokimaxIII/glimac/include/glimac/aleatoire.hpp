@@ -122,9 +122,15 @@ namespace glimac {
         return (1/(std::sqrt(2*M_PI)))*std::exp(-2.0*val*val);
     }
 
-    float x2(float val) {
-        return 2*val;
+    float triangulaire(float mode) {
+        float val = uniforme();
+        if (val < mode) {
+            return sqrt(val*mode);
+        } else {
+            return 1-sqrt((1-val)*(1-mode));
+        }
     }
+
 
     // UNIFORME A DENSITE je crois
     // surement oui
@@ -141,12 +147,8 @@ namespace glimac {
             }
             val = (val+1.5)/3;
         } else if (courbe == 2) {
-            float image = uniforme()*2;
-            float obj = x2(val);
-            while (image > obj) {
-                val = uniforme();
-                obj = x2(val);
-            }
+            val = triangulaire(1);
+
         }
         return val;
     }
