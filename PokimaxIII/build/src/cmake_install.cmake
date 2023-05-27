@@ -1,4 +1,4 @@
-# Install script for directory: /home/eric/PIII/PokimaxIII/src
+# Install script for directory: /home/eric/PIII2/PokimaxIII/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

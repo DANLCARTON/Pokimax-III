@@ -848,7 +848,7 @@ detail/type_vec4.hpp
 detail/func_vector_relational.hpp
 ../third-party/include/glm/detail/func_vector_relational.hpp
 
-/home/eric/PIII/PokimaxIII/glimac/src/Cone.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/Cone.cpp
 cmath
 -
 vector
@@ -856,43 +856,43 @@ vector
 iostream
 -
 glimac/common.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/common.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/common.hpp
 glimac/Cone.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/Cone.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/Cone.hpp
 
-/home/eric/PIII/PokimaxIII/glimac/src/Geometry.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/Geometry.cpp
 glimac/Geometry.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/Geometry.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/Geometry.hpp
 tiny_obj_loader.h
-/home/eric/PIII/PokimaxIII/glimac/src/tiny_obj_loader.h
+/home/eric/PIII2/PokimaxIII/glimac/src/tiny_obj_loader.h
 iostream
 -
 algorithm
 -
 
-/home/eric/PIII/PokimaxIII/glimac/src/Image.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/Image.cpp
 glimac/Image.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/Image.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/Image.hpp
 stb_image.h
-/home/eric/PIII/PokimaxIII/glimac/src/stb_image.h
+/home/eric/PIII2/PokimaxIII/glimac/src/stb_image.h
 iostream
 -
 
-/home/eric/PIII/PokimaxIII/glimac/src/Program.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/Program.cpp
 glimac/Program.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/Program.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/Program.hpp
 stdexcept
 -
 
-/home/eric/PIII/PokimaxIII/glimac/src/SDLWindowManager.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/SDLWindowManager.cpp
 glimac/SDLWindowManager.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/SDLWindowManager.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/SDLWindowManager.hpp
 iostream
 -
 
-/home/eric/PIII/PokimaxIII/glimac/src/Shader.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/Shader.cpp
 glimac/Shader.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/Shader.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/Shader.hpp
 fstream
 -
 stdexcept
@@ -902,7 +902,7 @@ string
 sstream
 -
 
-/home/eric/PIII/PokimaxIII/glimac/src/Sphere.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/Sphere.cpp
 cmath
 -
 vector
@@ -910,11 +910,11 @@ vector
 iostream
 -
 glimac/common.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/common.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/common.hpp
 glimac/Sphere.hpp
-/home/eric/PIII/PokimaxIII/glimac/src/glimac/Sphere.hpp
+/home/eric/PIII2/PokimaxIII/glimac/src/glimac/Sphere.hpp
 
-/home/eric/PIII/PokimaxIII/glimac/src/stb_image.h
+/home/eric/PIII2/PokimaxIII/glimac/src/stb_image.h
 stdio.h
 -
 math.h
@@ -936,7 +936,7 @@ stddef.h
 stdint.h
 -
 
-/home/eric/PIII/PokimaxIII/glimac/src/tiny_obj_loader.cpp
+/home/eric/PIII2/PokimaxIII/glimac/src/tiny_obj_loader.cpp
 cstdlib
 -
 cstring
@@ -954,9 +954,9 @@ fstream
 sstream
 -
 tiny_obj_loader.h
-/home/eric/PIII/PokimaxIII/glimac/src/tiny_obj_loader.h
+/home/eric/PIII2/PokimaxIII/glimac/src/tiny_obj_loader.h
 
-/home/eric/PIII/PokimaxIII/glimac/src/tiny_obj_loader.h
+/home/eric/PIII2/PokimaxIII/glimac/src/tiny_obj_loader.h
 string
 -
 vector

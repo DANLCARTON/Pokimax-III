@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/eric/PIII/PokimaxIII/src/main.cpp" "/home/eric/PIII/PokimaxIII/build/src/CMakeFiles/src_main.dir/main.cpp.o"
+  "/home/eric/PIII2/PokimaxIII/src/main.cpp" "/home/eric/PIII2/PokimaxIII/build/src/CMakeFiles/src_main.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,7 +17,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/eric/PIII/PokimaxIII/build/glimac/CMakeFiles/glimac.dir/DependInfo.cmake"
+  "/home/eric/PIII2/PokimaxIII/build/glimac/CMakeFiles/glimac.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
