@@ -16,16 +16,16 @@ regarder l'introduction ? (y/n)
 
 repondez avec `y` pour oui et `n` pour non et appuyez sur entrée. 
 
-Si vous avez choisi de regarder l'introduction, un texte reprenant le dialogue d'introduction du professeur Chen dans Pokémon : Version Rouge et Bleue défilera et vous présentera le monde de Pokémon. Il vous demandera votre nom. 
+Si vous avez choisi de regarder l'introduction, un dialogue d'introduction défilera et vous présentera le monde de Pokémon. On vous demandera votre nom. 
 
 ```
 Comment t'appelles-tu ?
 Votre Nom ? : 
 ```
 
-Entrez votre nom puis appuyez sur entrée. Votre nom est un facteur important dans la partie aléatoire du jeu. En effet à partir de votre nom est calculé un ID qui rentrera en tant que paramètre dans de nombreuses lois de probabilités du jeu. Si vous avez choisi de ne pas regarder l'introduction, un ID vous sera donné d'office : 50. 
+Entrez votre nom puis appuyez sur entrée. **Votre nom est un facteur important dans la partie aléatoire du jeu.** En effet à partir de votre nom est calculé un ID qui rentrera en tant que paramètre dans de nombreuses lois de probabilités du jeu. Si vous avez choisi de ne pas regarder l'introduction, un ID vous sera donné d'office : 50. 
 
-Le professeur Chen finira par vous expliquer les commandes puis vous pourrez jouer. 
+On finira par vous expliquer les commandes puis vous pourrez passer à la suite. 
 
 ### 2. Paramétrage de la carte
 
@@ -36,7 +36,7 @@ largeur de la map (conseillee : 50) :
 ```
 Entrez les valeurs qui vous conviennent pour la taille de la carte. Faites en fonction de la taille de la fenêtre de votre invite de commande pour éviter de faire une carte trop grande. 
 ```
-forme de la map (0 = normal, 1 = Gauss, 2 = 2X) :
+forme de la map (0 = normal, 1 = Gauss, 2 = Triangulaire) :
 ```
 pour ce dernier paramètre, entrez ̀`0`, `1` ou `2` pour choisir comment les Pokémon seront distribués sur la carte.
 
@@ -116,7 +116,7 @@ Appuyez sur `R` pour tenter d'attaquer le Pokémon sauvage, appuyez sur `F` pour
 
 Appuyez sur la touche `V` pour avoir des estimations sur ce qu'il va ce passer lors du prochain tour. 
 
-## II. Lois de probabilités et variables aléatoires
+## II. Lois de probabilités et variables aléatoires utilisées
 
 ### 1. Loi uniforme
 La loi uniforme modélise une situation où chaque événement à la même probabilité d'arriver. 
@@ -174,7 +174,7 @@ float probaGeometrique(int id, int k) {
 Cette fonction modélise les essais avant d'obtenir un succès et calcule la probabilité d'obtenir la situation modélisée. 
 
 #### Dans le jeu
-Elle sert lors des estimations. Dans un combat, en utilisant la touche `V`, la loi géométrique est utilisée pour estimer le nombre d'essais nécéssaires avant que votre Pokémon arrive a toucher son adversaire avec un attaque et inversement. Elle sert aussi a estimer le nombre d'essais nécéssaires avant de réussir à capturer le pokémon adverse. 
+Elle sert lors des estimations. Dans un combat, en utilisant la touche `V`, la loi géométrique est utilisée pour estimer le nombre d'essais nécéssaires avant que votre Pokémon arrive a toucher son adversaire avec une attaque et inversement. Elle sert aussi a estimer le nombre d'essais nécéssaires avant de réussir à capturer le pokémon adverse. 
 
 ### 3. Loi de Bernoulli
 
@@ -193,7 +193,7 @@ avec le paramètre `p`, une probabilité de succès.
 #### Dans le jeu
 Elle sert en combat, au moment d'attaquer. la loi de Bernoulli est utilisée pour savoir si le pokémon attaquant va réussi à toucher l'autre. en cas de succès, tous les calculs sont réalisés, en cas d'échec une ligne de texte vous indique que le pokémon a raté son attaque. La probabilité `p` donnée en paramètre de la fonction est calculée à partir de la statistique de précision du pokemon. $$p = \frac{\frac{\rm{précision}*90}{130}+20}{100}$$
 
-*(`p` peut être supérieur à 1, votre pokémon touchera à tous les coups)*
+*(`p` peut être supérieur à 1, votre Pokémon touchera à tous les coups)*
 
 ### 4. Loi binomiale
 
@@ -211,7 +211,7 @@ float binomiale(int id, int k, int n) {
     return Pk;
 }
 ``` 
-pour une meilleure lisibilité : $$C_n^k=\frac{n!}{k!\times(n-k)!}$$ $$P_k=C_n^k\times p^k(1-p)^{n-k}$$
+pour une meilleure lisibilité : $$C_n^k=\frac{n!}{k!\times(n-k)!}\\P_k=C_n^k\times p^k(1-p)^{n-k}$$
 
 avec comme paramètre `id` l'ID du joueur qui donne la probabilité de succès. 
 
@@ -287,6 +287,98 @@ En prenant seulement les pokémon considérés comme rare et en les multipliant 
 
 Avec $x$ défini avec la loi de Poisson juste avant et `iter` fixé à 1000.
 
+### 7. Loi normale centrée réduite
+
+La loi normale centrée réduite permet de modéliser différentes situations dans de nombreux domaines comme la distribution des tailles d'une population ou la plage de résultats de tests standardisés (QI) par exemple.
+
+#### Implémentation
+
+La fonction permettant de simuler une loi normale centrée réduite grâce à une courbe en cloche de Gauss est définie comme suit : 
+
+``` cpp
+// Quand courbe vaut 1
+float densite(int id, int courbe) {
+    float val = uniforme();
+    if (courbe == 1) {
+        val = uniforme()*3-1.5;
+        float image = uniforme()*.38;
+        float obj = gauss(val);
+        while (image > obj) {
+            val = uniforme()*3-1.5;
+            obj = gauss(val);
+        }
+        val = (val+1.5)/3;
+    } 
+    /*else if (courbe == 2) {
+        val = triangulaire(1);
+
+    }*/
+    return val;
+}
+```
+avec
+``` cpp
+float gauss(float val) {
+    return (1/(std::sqrt(2*M_PI)))*std::exp(-2.0*val*val);
+}
+```
+Pour une meilleure lisibilité, la fonction `gauss(float val)` renvoie$$\frac{1}{\sqrt{2\pi}}\times e^{-2\rm{val}^2}$$
+
+Cette fonction donne une courde en cloche de gauss centrée sur $0$ et légèrement déformée pour resserrer la "cloche" afin qu'elle soit comprise entre $-1,5$ et $1,5$.
+
+Dans densité(), les nombres sont tirés aléatoirement dans cet intervalle puis replacés entre $0$ et $1$ avant d'être retournés 
+
+#### Dans le jeu
+
+Elle sert après avoir fait le choix de la "forme" de la carte. en choisissant 1, l'emplacement des `?` sera fait suivant la courbe en cloche de Gauss évoquée précédemment. Tous les Pokémon devraient être distribués vers le centre de la carte avec ce choix. 
+
+### 8. Loi triangulaire
+
+La loi triangulaire permet de modéliser différentes situations dans de nombreux domaines comme des temps d'attente ou des estimations de coûts par exemple. 
+
+#### Implémentation
+
+La fonction permettant de simuler une loi triangulaire est défine comme suit :
+
+``` cpp
+// Quand courbe vaut 2
+float densite(int id, int courbe) {
+    float val = uniforme();
+    /* if (courbe == 1) {
+        val = uniforme()*3-1.5;
+        float image = uniforme()*.38;
+        float obj = gauss(val);
+        while (image > obj) {
+            val = uniforme()*3-1.5;
+            obj = gauss(val);
+        }
+        val = (val+1.5)/3;
+    } */
+    else if (courbe == 2) {
+        val = triangulaire(1);
+    }
+    return val;
+}
+```
+avec
+
+``` cpp
+float triangulaire(float mode) {
+    float val = uniforme();
+    if (val < mode) {
+        return sqrt(val*mode);
+    } else {
+        return 1-sqrt((1-val)*(1-mode));
+    }
+}
+```
+
+Cette fonction simule une loi triangulaire de support $]0 ; 1[$ et de mode fixé à $1$.
+
+#### Dans le jeu
+
+Elle sert après avoir fait le choix de la "forme" de la carte. en choisissant 2, l'emplacement des `?` sera fait suivant la loi trianglaire avec les paramètres cité précédemment. Tous les Pokémon devraient être distribués vers le coin inférieur gauche de la carte avec ce choix. 
+
 ## III. Compilation et execution
 dans l'invite de commande utiliser :
 ```
@@ -294,5 +386,6 @@ dans l'invite de commande utiliser :
 ```
 
 ## IV. Dépendances
-La librairie `conio.h` est nécessaire pour utiliser Pokimax III. voir : [zoelabbb/conio.h](https://github.com/zoelabbb/conio.h)
-en cas de conflit sur une certaine fonction ```gettext```, modifier le fichier conio.h dans ```usr/include/``` et commenter la ligne 377
+La librairie `conio.h` est nécessaire pour utiliser Pokimax III. voir : [github.com/zoelabbb/conio.h](https://github.com/zoelabbb/conio.h)
+
+- en cas de conflit sur une certaine fonction ```gettext```, modifier le fichier conio.h dans ```usr/include/``` et commenter la ligne 377
