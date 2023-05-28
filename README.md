@@ -76,7 +76,7 @@ Votre personnage est représenté par le caractère `0`, il apparaît dans le co
 
 Pour cela, déplacez-vous avec les touches `Z`, `Q`, `S` et `D` et gérez votre équipe de Pokémon avec la touche `T`. Lancez un combat contre un Pokémon sauvage en entrant en contact avec lui. 
 
-### 3. Gestion de l'équipe
+### 4. Gestion de l'équipe
 
 Vous commencez le jeu avec un Pikachu et votre équipe peut contenir jusqu'à 6 Pokémon. 
 
@@ -96,7 +96,7 @@ Si vous capturez un Pokémon alors que votre équipe est complète, le jeu vous 
 
 Si vous entrez une valeur interdite (>6 ou 0 par exemple) ou si vous tentez de mettre en première position un Pokémon n'ayant plus de PV, il ne se passera rien. tapez un autre chiffre valide puis appuyez sur entrée. 
 
-### 4. Combat
+### 5. Combat
 
 Une fois que vous aurez rencontré un `?`, un combat ce lancera.
 
@@ -115,6 +115,118 @@ V - ESTIMATIONS
 Appuyez sur `R` pour tenter d'attaquer le Pokémon sauvage, appuyez sur `F` pour tenter de le capturer, appuyez sur `T` pour gérer votre équipe et appuyez sur `G` pour prendre la fuite. 
 
 Appuyez sur la touche `V` pour avoir des estimations sur ce qu'il va ce passer lors du prochain tour. 
+
+### 6. Statistiques des Pokémon
+
+|Nom|Type|PV|Attaque|Défense|Taux de capture|Précision|Rareté|
+|---|---|---|---|---|---|---|---|
+|PIKACHU|Electrik|110|70|70|80|120|1|
+|CANARTICHO|Normal|52|90|55|75|60|2|
+|KANGOUREX|Roche|105|95|80|18|90|2|
+|SCARABRUTE|Plante|65|125|100|18|85|2|
+|TAUROS|Normal|75|100|95|18|110|2|
+|LOKHLASS|Eau|130|85|80|18|110|3|
+|INSOLOURDO|Roche|100|70|70|75|45|3|
+|QWILFISH|Eau|65|95|85|15|95|2|
+|CARATROC|Roche|20|10|230|75|5|2|
+|SCARINHO|Plante|80|125|75|18|85|2|
+|CORAYON|Eau|65|55|95|25|35|4|
+|CADOIZO|Eau|45|55|45|15|75|4|
+|AIRMURE|Roche|65|80|140|10|70|2|
+|QUEULORIOR|Normal|55|20|35|18|75|5|
+|ECREMEUH|Normal|95|80|100|15|100|2|
+|TENEFIX|Roche|50|75|75|18|50|4|
+|MYSDIBULE|Roche|50|85|85|18|50|3|
+|POSIPI|Electrik|60|50|40|80|95|3|
+|NEGAPI|Electrik|60|50|40|80|95|3|
+|MUCIOLE|Plante|65|75|75|60|85|2|
+|LUMIVOLE|Plante|65|75|75|60|85|2|
+|CHARTOR|Feu|70|85|140|35|20|2|
+|SPINDA|Normal|60|60|60|60|60|3|
+|MANGRIFF|Normal|73|115|60|35|90|2|
+|SEVIPER|Normal|73|115|60|35|90|2|
+|SELEROC|Roche|90|55|65|15|70|4|
+|SOLAROC|Roche|90|55|65|15|70|4|
+|MORPHEO|Normal|70|70|70|70|70|2|
+|KECLEON|Normal|60|90|70|80|40|2|
+|TROPIUS|Plante|99|58|83|78|51|3|
+|ABSOL|Normal|65|130|60|12|75|3|
+|RELICANTH|Eau|100|90|100|10|55|3|
+|LOVDISC|Eau|43|30|55|88|97|3|
+|PACHIRISU|Electrik|60|90|70|80|95|2|
+|PIJAKO|Normal|76|45|70|75|91|2|
+|SPIRITOMB|Roche|50|92|108|39|35|3|
+|VORTENTE|Plante|74|100|72|78|46|2|
+|MOTISMA|Normal|50|65|107|15|91|3|
+|NANMEOUIE|Normal|103|60|86|100|50|2|
+|JUDOKRAK|Roche|120|100|85|18|45|2|
+|KARACLEE|Roche|75|125|75|18|85|3|
+|BARGANTUA|Eau|70|95|65|25|98|3|
+|MARACACHI|Plante|75|60|86|67|80|3|
+|CRYPTERO|Feu|72|58|80|18|97|4|
+|EMOLGA|Electrik|55|75|60|80|103|3|
+|MAMANBO|Eau|165|75|80|30|65|1|
+|HEXAGEL|Eau|80|50|30|10|105|5|
+|LIMONDE|Roche|109|66|84|30|32|3|
+|DRAKKARMIN|Roche|77|120|90|18|48|3|
+|FRISON|Normal|95|110|95|18|55|3|
+|AFLAMANOIR|Feu|85|97|66|35|65|3|
+|FERMITE|Plante|58|109|112|35|109|2|
+|COUAFAREL|Normal|75|80|60|47|102|3|
+|BRUTALIBRE|Normal|78|92|75|39|115|3|
+|DEDENNE|Electrik|67|60|60|75|101|3|
+|STRASSIE|Roche|50|50|150|15|50|4|
+|TROUSSELIN|Feu|57|80|91|29|75|4|
+|BROCELOME|Plante|43|70|48|50|38|6|
+|PLUMELINE|Feu|75|70|70|20|93|4|
+|FROUSSARDINE|Eau|45|20|20|60|40|7|
+|GUERILANDE|Plante|51|52|90|24|100|4|
+|GOUROUTAN|Plante|90|60|80|18|60|4|
+|QUARTERMAC|Plante|100|120|90|18|80|2|
+|CONCOMBAFFE|Eau|55|60|130|60|5|4|
+|METENO|Roche|60|100|60|80|120|2|
+|DODOALA|Normal|65|115|65|45|65|3|
+|BOUMATA|Feu|60|78|135|30|36|4|
+|TOGEDEMARU|Electrik|65|98|43|70|96|4|
+|MIMIQUI|Electrik|55|90|80|17|96|4|
+|DENTICRISSE|Eau|68|105|70|30|92|3|
+|DRAIEUL|Normal|78|60|85|30|36|4|
+|SINISTRAIL|Plante|70|131|100|10|40|3|
+|KATAGAMI|Plante|59|181|131|3|109|1|
+|NIGOSIER|Eau|70|85|55|18|85|4|
+|HEXADRON|Roche|65|100|100|18|75|3|
+|WIMESSIR|Normal|65|60|60|12|90|5|
+|DURALUGON|Roche|70|95|115|18|85|3|
+|WATTAPIK|Electrik|48|100|95|75|15|4|
+|DOLMAN|Roche|100|20|20|25|70|5|
+|BEKAGLACON|Eau|75|80|110|60|130|2|
+|MORPEKO|Electrik|58|90|60|70|97|3|
+|TAPATOES|Normal|82|96|51|74|92|3|
+|CRAPAROI|Roche|90|100|115|47|75|3|
+|LESTOMBAILE|Normal|70|103|85|10|82|3|
+|FERDETER|Roche|70|85|145|10|65|3|
+|FLAMENROULE|Feu|82|115|74|39|70|3|
+|DELESTIN|Eau|90|102|73|39|70|3|
+|OYACATA|Eau|150|100|115|10|35|1|
+|NIGIRIGON|Eau|68|50|60|39|82|4|
+|MOTORIZARD|Normal|70|95|65|74|121|2|
+|CHONGJIAN|Plante|85|85|100|2|70|3|
+|BAOJIAN|Eau|80|120|80|2|135|2|
+|DINGLU|Roche|155|110|125|2|42|1|
+|YUYU|Feu|55|80|80|2|100|4|
+|RUGIT-LUNE|Roche|105|139|71|6|119|1|
+|GARDE-DE-FER|Roche|74|130|90|6|116|2|
+
+### 7. Intéractions entre les types
+
+| |Normal|Eau|Feu|Plante|Electrik|Roche|
+|---|---|---|---|---|---|---|
+|Normal|1|1|1|1|1|1|
+|Eau|1|1|2|0.5|0.5|2|
+|Feu|1|0.5|1|2|1|0.5|
+|Plante|1|2|0.5|1|0.5|2|
+|Electrik|1|2|1|2|1|0.5|
+|Roche|1|2|2|.5|2|1|
 
 ## II. Lois de probabilités et variables aléatoires utilisées
 
